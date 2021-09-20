@@ -7,14 +7,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: enter frontend directory
-          command: cd ~/frontend
-      - run:
-          name: install depedencies
-          command: npm install --legacy-peer-deps
-      - run:
-          name: scan depedencies before build
-          command: npm audit fix
+          name: scan and build
+          command: |
+            cd frontend 
+            npm install --legacy-peer-deps
+            npm audit fix
+            npm install
+      # npm run build
       # run test
       - save_cache:
           paths: [frontend/node_modules]
@@ -26,20 +25,20 @@ jobs:
     steps:
       - checkout
       - run:
-          name: enter backend directory
-          command: cd ~/backend
-      - run:
-          name: install depedencies
-          command: npm install
-      - run:
-          name: scan depedencies before build
-          command: npm audit fix
+          name: scan and install dependencies
+          command: |
+            cd backend
+            npm install
+            npm audit fix
+            npm install
       # run test
       - run:
           name: build and upload docker
           command: |
+            cd backend
             dockerpath="wasupont/tp-backend"
-            docker login --username $DOCKER_USER && docker image tag tp-backend $dockerpath
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            docker image tag tp-backend $dockerpath
             echo "Docker ID and Image: $dockerpath"
             docker image push $dockerpath
       - save_cache:
@@ -54,18 +53,15 @@ jobs:
       - run:
           name: install ftp client
           command: |
-            apk add lftp
-      - run:
-          name: enter frontend directory
-          command: cd ~/frontend
+            sudo apt-get install ncftp
       - restore_cache:
           keys: [frontend-build]
       - run: 
           name: build frontend
-          command: npm run build
-      - run:
-          name: upload production to server
-          command: lftp -e "mirror -R build/ public_html/tmp/" -u $FTP_USER,$FTP_PASSWORD $FTP_URL
+          command: |
+            cd frontend
+            npm run build
+            ncftpput -R -v -u $FTP_USER -p $FTP_PASSWORD $FTP_URL public_html/tmp/ build/*
 
   build_backend_docker_image:
     docker:
@@ -83,14 +79,11 @@ jobs:
       - restore_cache:
           keys: ['backend-build']
       - run:
-          name: enter backend directory
-          command: cd ~/backend
-      - run:
-          name: build docker file
-          command: docker build --tag wasupont/tp-backend .
-      - run:
-          name: run Docker image
-          command: docker run -d -p 3000:3000 -p 3306:3306 -e ENV=DEBUG wasupont/tp-backend
+          name: build backend image and run
+          command: |
+            cd backend
+            docker build --tag wasupont/tp-backend .
+            docker run -d -p 3000:3000 -p 3306:3306 -e ENV=DEBUG wasupont/tp-backend
 
 workflows:
   default:
