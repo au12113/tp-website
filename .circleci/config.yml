@@ -65,7 +65,7 @@ jobs:
           command: npm run build
       - run:
           name: upload production to server
-          command: lftp -e "mirror -R ./build/ public_html/" -u $FTP_USER,$FTP_PASSWORD $FTP_URL
+          command: lftp -e "mirror -R build/ public_html/tmp/" -u $FTP_USER,$FTP_PASSWORD $FTP_URL
 
   build_backend_docker_image:
     docker:
@@ -92,3 +92,12 @@ jobs:
           name: run Docker image
           command: docker run -d -p 3000:3000 -p 3306:3306 -e ENV=DEBUG wasupont/tp-backend
 
+workflows:
+  default:
+    jobs:
+      - scan_and_build_frontend
+      - scan_and_build_backend
+      - deploy_frontend:
+          requires: [scan_and_build_frontend]
+      - build_backend_docker_image:
+          requires: [scan_and_build_backend]
