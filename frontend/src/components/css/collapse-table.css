@@ -1,0 +1,48 @@
+.spec-table.hide {
+    animation: fadeOut ease 1s;
+    -webkit-animation: fadeOut ease 1s;
+    -moz-animation: fadeOut ease 1s;
+    -o-animation: fadeOut ease 1s;
+    -ms-animation: fadeOut ease 1s;
+}
+.hide {
+    opacity: 0;
+    position:fixed;
+    z-index: -5;
+    width: 100%;
+}
+
+.spec-table {
+    animation: fadeIn ease 500ms;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.01;
+        transform: translate(0vw, -10vh);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0.2;
+        width: 65vw;
+        transform: none;
+    }
+    100% {
+        /* position:fixed; */
+        /* z-index: -1; */
+        width: 65vw;
+        visibility:hidden;
+        transform: translate(0vw, -10vh);
+        opacity: 0;
+    }
+}

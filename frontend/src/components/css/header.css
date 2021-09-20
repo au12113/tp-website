@@ -1,0 +1,40 @@
+/* Header Style */
+li.active {
+    background-color: grey;
+    border-radius: 5px;
+    align-content: center;
+}
+
+li.nav-item {
+    margin: auto 10px auto 10px;
+    padding: 0px 10px 0px 10px;
+}
+
+.menu-text {
+    font-size: 1.4rem !important;
+    text-decoration: underline !important;
+}
+
+.ui.menu .item:before {
+    background: transparent;
+}
+
+.header-logo {
+    height: 80px;
+}
+
+.header-logo.mini {
+    height: 35px;
+}
+
+@media only screen and (max-width: 991px) {
+    .header-logo {
+        height: 50px;
+    }
+
+    .mini-nav{
+        background-color: transparent !important;
+    }
+    
+}
+

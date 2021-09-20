@@ -1,0 +1,70 @@
+* {
+    font-family: 'Kanit';
+}
+
+html {
+    font-size: 16px;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+#wrap {
+    min-height: 100vh;
+}
+
+#context {
+    min-height: 100vh;
+}
+
+h4.text-light {
+    margin: auto auto auto 1rem;
+}
+
+h5.text-light {
+    margin: auto auto auto auto;
+}
+
+#carouselExampleIndicators {
+    background-color: #343a40;
+}
+
+div.noPadding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div.noMargin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* For Blank Content */
+
+div.box {
+    height: 800px;
+    background-color: whitesmoke;
+}
+
+.carousel {
+    width: 100%;
+    height: 30rem;
+    margin: auto;
+}
+
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+}
+
+@media only screen and (min-width: 992px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    * {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Kanit';
+    font-weight: normal;
+    font-style: normal;
+    src: local('Kanit'), url('./fonts/Kanit-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: normal;
+    font-style: italic;
+    src: local('Kanit'), url('./fonts/Kanit-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: bold;
+    font-style: normal;
+    src: local('Kanit'), url('./fonts/Kanit-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: bold;
+    font-style: italic;
+    src: local('Kanit'), url('./fonts/Kanit-MediumItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Hemi Head';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Hemi Head'), url('./fonts/hemi-head-bd-it.ttf');
+}

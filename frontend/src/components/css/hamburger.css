@@ -1,0 +1,50 @@
+.hamburger {
+    z-index: 1010;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.line {
+    height: 3px;
+    width: 30px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.line-top {
+    transform: none;
+    transform-origin: top left;
+    margin-bottom: 5px;
+}
+
+.line-top.open {
+    transform: translate(3px, -5px)  rotate(45deg);
+}
+
+.line-middle {
+    opacity: 1;
+    transform: none;
+}
+
+.line-middle.open {
+    opacity: 0;
+    transform: translateX(-16px);
+}
+
+.line-bottom {
+    transform: none;
+    transform-origin: top left;
+    margin-top: 5px;
+}
+
+.line-bottom.open {
+    transform: translateX(1px) rotate(-45deg);
+}

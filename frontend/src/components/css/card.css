@@ -1,0 +1,40 @@
+/* Card Style */
+.card {
+    height: 12rem;
+}
+.hilight {
+    height: 25rem;
+}
+button.card-button {
+    position: absolute;
+    left: 50%;
+    margin-left: -5rem;
+    width: 10rem;
+    bottom: 10px;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 991px) {
+    .card {
+        height: 30vh;
+    }
+    .hilight {
+        height: 30vh;
+    }
+    button.card-button {
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        margin-left: -60px;
+        margin-top: -25px;
+        width: 120px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+div.card-background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

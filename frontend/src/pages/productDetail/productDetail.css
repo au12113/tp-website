@@ -1,0 +1,29 @@
+h2 {
+    text-transform: uppercase;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+#table-wrapper {
+    position: relative;
+}
+
+#table-scroll {
+    height: 40vh;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+#table-wrapper table {
+    width: 100%;
+}
+
+.color-tag {
+    width: 15px;
+    height: 30px;
+    transform: skew(-20deg);
+    margin-right: 10px;
+    box-shadow: 1px 1px 1px black;
+}

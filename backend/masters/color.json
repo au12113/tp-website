@@ -1,0 +1,50 @@
+[
+    {
+        "id": "ขาวมุกเอเวอเรสต์",
+        "linear_gradient": "linear-gradient(170deg,#f0f0ed 9%,#f5f5f5 35%,#d6d6d6 43%,#f5f5f5 52%,#f0f0ed)"
+    },
+    {
+        "id": "เงินโบฮีเมียน เมทัลลิก",
+        "linear_gradient": "linear-gradient(170deg,#bababa 9%,#e2e1e1 35%,#a8a8a8 43%,#e2e1e1 52%,#bababa)"
+    },
+    {
+        "id": "เงินเซอร์แมท",
+        "linear_gradient": "linear-gradient(170deg,#393d40 9%,#717579 35%,#303030 43%,#717579 52%,#393d40)"
+    },
+    {
+        "id": "น้ำเงินโพลีนีเชียน",
+        "linear_gradient": "linear-gradient(170deg,#002b64 9%,#206ec4 35%,#001c50 43%,#206ec4 52%,#002b64)"
+    },
+    {
+        "id": "ดำบาวาเรียน ไมก้า",
+        "linear_gradient": "linear-gradient(170deg,#000 9%,#2c2c2c 35%,#080808 43%,#2c2c2c 52%,#000)"
+    },
+    {
+        "id": "วาเลนเซีย โทพาส เมทัลลิก",
+        "linear_gradient": "linear-gradient(170deg,#a93d18 9%,#df5223 35%,#862208 43%,#df5223 52%,#a93d18)"
+    },
+    {
+        "id": "ขาวไซบีเรียน", 
+        "linear_gradient": "linear-gradient(170deg,#f7f7f7 9%,#f2f2f2 35%,#ddd 43%,#f2f2f2 52%,#f7f7f7)"
+    },
+    {
+        "id": "ดำออสเตรเลียนโคล",
+        "linear_gradient": "linear-gradient(170deg, rgb(0, 0, 0) 9%, rgb(44, 44, 44) 35%, rgb(8, 8, 8) 43%, rgb(44, 44, 44) 52%, rgb(0, 0, 0))"
+    },
+    {
+        "id": "แดงเอทนา",
+        "linear_gradient": "linear-gradient(170deg, rgb(153, 0, 5) 9%, rgb(195, 14, 54) 35%, rgb(136, 0, 22) 43%, rgb(195, 14, 54) 52%, rgb(153, 0, 5))"
+    },
+    {
+        "id": "ขาวมุกโดโลไมท์",
+        "linear_gradient": "linear-gradient(170deg,#f0f0ed 9%,#f5f5f5 35%,#d6d6d6 43%,#f5f5f5 52%,#f0f0ed)"
+    },
+    {
+        "id": "น้ำตาลมาราเกช",
+        "linear_gradient": "linear-gradient(170deg,#452c1f 9%,#90624d 35%,#452c1f 43%,#90624d 52%,#452c1f)"
+    },
+    {
+        "id": "เงินไอซ์เบิร์ก",
+        "linear_gradient": "linear-gradient(170deg,#bababa 9%,#e2e1e1 35%,#a8a8a8 43%,#e2e1e1 52%,#bababa)"
+    }
+]

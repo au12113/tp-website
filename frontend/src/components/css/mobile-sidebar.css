@@ -1,0 +1,23 @@
+.mobile-sidebar {
+    position: absolute;
+    z-index: 1008;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.85);
+    top:0;
+    left:0;
+    transform: transformX(100vw);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px 0px 40px;
+}
+
+.mobile-sidebar.open {
+    transform: none;
+}
+
+.mobile-sidebar>* {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: white;
+}

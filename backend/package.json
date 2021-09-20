@@ -1,0 +1,26 @@
+{
+    "name": "tp-express-server",
+    "version": "1.0.1",
+    "description": "",
+    "main": "index.js",
+    "author": "wasupont",
+    "scripts": {
+        "start": "node -r dotenv/config index.js dotenv_config_path=.env",
+        "dev": "nodemon -r dotenv/config index.js dotenv_config_path=.env.development",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@google-cloud/debug-agent": "^5.2.8",
+        "@google-cloud/firestore": "^4.12.0",
+        "cors": "^2.8.5",
+        "dotenv": "^9.0.2",
+        "express": "^4.17.1",
+        "lodash": "^4.17.20",
+        "mariadb": "^2.5.4",
+        "nodemon": "^2.0.12"
+    },
+    "engine": {
+        "node": "~12"
+    }
+}

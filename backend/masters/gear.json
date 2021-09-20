@@ -1,0 +1,558 @@
+[
+    {
+        "id": "9S-1310TO",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 9.480
+            },
+            {
+                "gear": "1",
+                "ratio": 6.580
+            },
+            {
+                "gear": "2",
+                "ratio": 4.680
+            },
+            {
+                "gear": "3",
+                "ratio": 3.480
+            },
+            {
+                "gear": "4",
+                "ratio": 2.620
+            },
+            {
+                "gear": "5",
+                "ratio": 1.890
+            },
+            {
+                "gear": "6",
+                "ratio": 1.350
+            },
+            {
+                "gear": "7",
+                "ratio": 1.000
+            },
+            {
+                "gear": "8",
+                "ratio": 0.750
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 8.970
+            }
+        ]
+    },
+    {
+        "id": "9S-1315TO",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": true,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 9.480
+            },
+            {
+                "gear": "1",
+                "ratio": 6.580
+            },
+            {
+                "gear": "2",
+                "ratio": 4.680
+            },
+            {
+                "gear": "3",
+                "ratio": 3.480
+            },
+            {
+                "gear": "4",
+                "ratio": 2.620
+            },
+            {
+                "gear": "5",
+                "ratio": 1.890
+            },
+            {
+                "gear": "6",
+                "ratio": 1.350
+            },
+            {
+                "gear": "7",
+                "ratio": 1.000
+            },
+            {
+                "gear": "8",
+                "ratio": 0.750
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 8.970
+            }
+        ]
+    },
+    {
+        "id": "MEB9",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 10.340
+            },
+            {
+                "gear": "1",
+                "ratio": 7.125
+            },
+            {
+                "gear": "2",
+                "ratio": 5.187
+            },
+            {
+                "gear": "3",
+                "ratio": 3.750
+            },
+            {
+                "gear": "4",
+                "ratio": 2.682
+            },
+            {
+                "gear": "5",
+                "ratio": 1.900
+            },
+            {
+                "gear": "6",
+                "ratio": 1.383
+            },
+            {
+                "gear": "7",
+                "ratio": 1.000
+            },
+            {
+                "gear": "8",
+                "ratio": 0.715
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 9.015
+            }
+        ]
+    },
+    {
+        "id": "MEB9 with P.T.O.",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": true,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 10.340
+            },
+            {
+                "gear": "1",
+                "ratio": 7.125
+            },
+            {
+                "gear": "2",
+                "ratio": 5.187
+            },
+            {
+                "gear": "3",
+                "ratio": 3.750
+            },
+            {
+                "gear": "4",
+                "ratio": 2.682
+            },
+            {
+                "gear": "5",
+                "ratio": 1.900
+            },
+            {
+                "gear": "6",
+                "ratio": 1.383
+            },
+            {
+                "gear": "7",
+                "ratio": 1.000
+            },
+            {
+                "gear": "8",
+                "ratio": 0.715
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 9.015
+            }
+        ]
+    },
+    {
+        "id": "MEB9 with P.T.O.",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": true,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 10.340
+            },
+            {
+                "gear": "1",
+                "ratio": 7.125
+            },
+            {
+                "gear": "2",
+                "ratio": 5.187
+            },
+            {
+                "gear": "3",
+                "ratio": 3.750
+            },
+            {
+                "gear": "4",
+                "ratio": 2.682
+            },
+            {
+                "gear": "5",
+                "ratio": 1.900
+            },
+            {
+                "gear": "6",
+                "ratio": 1.383
+            },
+            {
+                "gear": "7",
+                "ratio": 1.000
+            },
+            {
+                "gear": "8",
+                "ratio": 0.715
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 9.015
+            }
+        ]
+    },
+    {
+        "id": "MZW6P",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": false,
+        "synchromesh": "เกียร์ 2 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 6.615
+            },
+            {
+                "gear": "2",
+                "ratio": 4.095
+            },
+            {
+                "gear": "3",
+                "ratio": 2.359
+            },
+            {
+                "gear": "4",
+                "ratio": 1.532
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.722
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 6.615
+            }
+        ]
+    },
+    {
+        "id": "MZW6P with gear smoother",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": true,
+        "synchromesh": "เกียร์ 2 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 6.615
+            },
+            {
+                "gear": "2",
+                "ratio": 4.095
+            },
+            {
+                "gear": "3",
+                "ratio": 2.359
+            },
+            {
+                "gear": "4",
+                "ratio": 1.532
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.722
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 6.615
+            }
+        ]
+    },
+    {
+        "id": "MZZ6W",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": false,
+        "synchromesh": "เกียร์ 2 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 6.369
+            },
+            {
+                "gear": "2",
+                "ratio": 3.767
+            },
+            {
+                "gear": "3",
+                "ratio": 2.385
+            },
+            {
+                "gear": "4",
+                "ratio": 1.442
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.720
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 6.369
+            }
+        ]
+    },
+    {
+        "id": "MZZ6F",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": false,
+        "synchromesh": "เกียร์ 2 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 6.369
+            },
+            {
+                "gear": "2",
+                "ratio": 3.767
+            },
+            {
+                "gear": "3",
+                "ratio": 1.966
+            },
+            {
+                "gear": "4",
+                "ratio": 1.355
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.782
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 6.369
+            }
+        ]
+    },
+    {
+        "id": "MYY6S",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": false,
+        "synchromesh": "เกียร์ 1 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 5.975
+            },
+            {
+                "gear": "2",
+                "ratio": 3.434
+            },
+            {
+                "gear": "3",
+                "ratio": 1.862
+            },
+            {
+                "gear": "4",
+                "ratio": 1.297
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.750
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 5.701
+            }
+        ]
+    },
+    {
+        "id": "MYY6S with gear smoother",
+        "type": "เกียร์กระปุก 6 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": true,
+        "synchromesh": "เกียร์ 1 ถึง 6",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 5.975
+            },
+            {
+                "gear": "2",
+                "ratio": 3.434
+            },
+            {
+                "gear": "3",
+                "ratio": 1.862
+            },
+            {
+                "gear": "4",
+                "ratio": 1.297
+            },
+            {
+                "gear": "5",
+                "ratio": 1.000
+            },
+            {
+                "gear": "6",
+                "ratio": 0.750
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 5.701
+            }
+        ]
+    },
+    {
+        "id": "MYY5T",
+        "type": "เกียร์กระปุก 5 เกียร์เดินหน้า",
+        "overdrive": true,
+        "pto": false,
+        "gearSmoother": false,
+        "synchromesh": "เกียร์ 1 ถึง 5",
+        "gearRatio": [
+            {
+                "gear": "1",
+                "ratio": 5.315
+            },
+            {
+                "gear": "2",
+                "ratio": 3.053
+            },
+            {
+                "gear": "3",
+                "ratio": 1.655
+            },
+            {
+                "gear": "4",
+                "ratio": 1.000
+            },
+            {
+                "gear": "5",
+                "ratio": 0.721
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 5.068
+            }
+        ]
+    },
+    {
+        "id": "ES11109",
+        "type": "เกียร์กระปุก 9 เกียร์เดินหน้า",
+        "overdrive": false,
+        "pto": true,
+        "synchromesh": "เกียร์ 1 ถึง 8",
+        "gearRatio": [
+            {
+                "gear": "โลว์พิเศษ",
+                "ratio": 12.638
+            },
+            {
+                "gear": "1",
+                "ratio": 8.807
+            },
+            {
+                "gear": "2",
+                "ratio": 6.550
+            },
+            {
+                "gear": "3",
+                "ratio": 4.768
+            },
+            {
+                "gear": "4",
+                "ratio": 3.548
+            },
+            {
+                "gear": "5",
+                "ratio": 2.482
+            },
+            {
+                "gear": "6",
+                "ratio": 1.846
+            },
+            {
+                "gear": "7",
+                "ratio": 1.344
+            },
+            {
+                "gear": "8",
+                "ratio": 1.000
+            },
+            {
+                "gear": "ถอยหลัง",
+                "ratio": 13.210
+            }
+        ]
+    }
+]
