@@ -15,7 +15,7 @@ RUN npm install
 
 ## Step 4:
 # Expose port 80
-EXPOSE 3000
+EXPOSE 3000 3306
 
 ## Step 5:
 # Run app.py at container launch

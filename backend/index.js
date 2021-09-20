@@ -13,6 +13,16 @@ app.set('trust proxy', true)
 
 app.use(cors())
 
+app.use((req, res, next)=>{
+    if(process.env.ENV==='DEBUG') {
+        const date = new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Bangkok'
+        })
+        console.log(`[${date}] ${req.originalUrl}`)
+    }
+    next()
+})
+
 app.get('/', (req, res) => {
     res.jsonp({
         "name": "index"

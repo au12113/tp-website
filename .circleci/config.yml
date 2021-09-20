@@ -1,0 +1,94 @@
+version: 2.1
+
+jobs:
+  scan_and_build_frontend:
+    docker:
+      - image: circleci/node:14.17.6
+    steps:
+      - checkout
+      - run:
+          name: enter frontend directory
+          command: cd ~/frontend
+      - run:
+          name: install depedencies
+          command: npm install --legacy-peer-deps
+      - run:
+          name: scan depedencies before build
+          command: npm audit fix
+      # run test
+      - save_cache:
+          paths: [frontend/node_modules]
+          key: frontend-build
+  
+  scan_and_build_backend:
+    docker:
+      - image: circleci/node:14.17.6
+    steps:
+      - checkout
+      - run:
+          name: enter backend directory
+          command: cd ~/backend
+      - run:
+          name: install depedencies
+          command: npm install
+      - run:
+          name: scan depedencies before build
+          command: npm audit fix
+      # run test
+      - run:
+          name: build and upload docker
+          command: |
+            dockerpath="wasupont/tp-backend"
+            docker login --username $DOCKER_USER && docker image tag tp-backend $dockerpath
+            echo "Docker ID and Image: $dockerpath"
+            docker image push $dockerpath
+      - save_cache:
+          paths: [backend/node_modules]
+          key: backend-build
+
+  deploy_frontend:
+    docker:
+      - image: circleci/node:14.17.6
+    steps:
+      - checkout
+      - run:
+          name: install ftp client
+          command: |
+            apk add lftp
+      - run:
+          name: enter frontend directory
+          command: cd ~/frontend
+      - restore_cache:
+          keys: [frontend-build]
+      - run: 
+          name: build frontend
+          command: npm run build
+      - run:
+          name: upload production to server
+          command: lftp -e "mirror -R ./build/ public_html/" -u $FTP_USER,$FTP_PASSWORD $FTP_URL
+
+  build_backend_docker_image:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - run:
+          name: install depedencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0\
+              awscli==1.11.76
+      - restore_cache:
+          keys: ['backend-build']
+      - run:
+          name: enter backend directory
+          command: cd ~/backend
+      - run:
+          name: build docker file
+          command: docker build --tag wasupont/tp-backend .
+      - run:
+          name: run Docker image
+          command: docker run -d -p 3000:3000 -p 3306:3306 -e ENV=DEBUG wasupont/tp-backend
+

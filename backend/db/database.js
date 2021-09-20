@@ -5,7 +5,9 @@ const pool = mariadb.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     connectionLimit: 5,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    socketTimeout: 15000,
+    connectTimeout: 30000
 })
 
 const query = async (qString) => {
