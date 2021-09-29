@@ -111,16 +111,9 @@ jobs:
           docker_layer_caching: true
       - aws-cli/setup
       - run:
-          name: Deploy VPC and SecurityGroup
+          name: Install dependencies
           command: |
-            aws cloudformation deploy --template-file .circleci/script/vpc.yaml --stack-name tp-website-vpc
-      - run:
-          name: Get VPC Output for EKS
-          command: |
-            export AWS_VPC=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='VpcId'].OutputValue" --output text)
-            export AWS_SG=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SecurityGroups'].OutputValue" --output text)
-            export AWS_Subnet_01=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId01'].OutputValue" --output text)
-            export AWS_Subnet_02=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId02'].OutputValue" --output text)
+            sudo apt-get sed
       - run:
           name: Install the eksctl tool
           command: |
@@ -139,14 +132,24 @@ jobs:
             $SUDO mv eksctl_download/eksctl /usr/local/bin/
             rmdir eksctl_download
       - run:
+          name: Deploy VPC and SecurityGroup
+          command: |
+            aws cloudformation deploy --template-file .circleci/script/vpc.yaml --stack-name tp-website-vpc
+      - run:
+          name: Get VPC Output for EKS
+          command: |
+            export AWS_VPC=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='VpcId'].OutputValue" --output text)
+            export AWS_SG=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SecurityGroups'].OutputValue" --output text)
+            export AWS_Subnet_01=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId01'].OutputValue" --output text)
+            export AWS_Subnet_02=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId02'].OutputValue" --output text)
+            sed -i "s/AWS_VPC/${AWS_VPC}" .circleci/script/eks.yaml
+            sed -i "s/AWS_SG/${AWS_SG}" .circleci/script/eks.yaml
+            sed -i "s/AWS_Subnet_01/${AWS_Subnet_01}" .circleci/script/eks.yaml
+            sed -i "s/AWS_Subnet_02/${AWS_Subnet_02}" .circleci/script/eks.yaml
+      - run:
           name: Create EKS cluster
           command: |
-            eksctl create cluster --name tp-website --region us-east-1 \
-            --nodegroup-name nodegroup-workers --node-type t3.small \
-            --nodes 1 --node-security-groups ${AWS_SG} \
-            --node-zones us-east-1a,us-east-1b \
-            --vpc-cidr 192.168.0.0/16 \
-            --vpc-public-subnets ${AWS_Subnet_01},${AWS_Subnet_02}
+            eksctl create cluster -f .circleci/script/eks.yaml
       - run:
           name: Apply deployment and service config
           command: |
