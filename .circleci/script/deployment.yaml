@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tp-website
+  namespace: default
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: tp-website-backend
+          image: public.ecr.aws/j1g2j9e9/tp-website:latest
+          ports:
+            - containerPort: 3000
+              name: tp-service
+            - containerPort: 3304
+              name: db-port
