@@ -120,7 +120,6 @@ jobs:
             export AWS_VPC=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='VpcId'].OutputValue" --output text)
             export AWS_SG=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SecurityGroups'].OutputValue" --output text)
             export AWS_Subnets=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetIds'].OutputValue" --output text)
-      - aws-eks/install-eksctl
       - aws-eks/create-cluster:
           aws-region: 'us-east-1'
           cluster-name: tp-website
@@ -147,4 +146,5 @@ workflows:
       #     requires: [scan_and_build_frontend]
       - build_and_push_backend_image:
           requires: [scan_backend]
-      - deploy_backend
+      - deploy_backend:
+          requires: [build_and_push_backend_image]
