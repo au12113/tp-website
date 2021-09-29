@@ -113,7 +113,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get sed
+            sudo apt-get install sed
       - run:
           name: Install the eksctl tool
           command: |
