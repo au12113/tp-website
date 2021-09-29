@@ -7,13 +7,13 @@ metadata:
   region: us-east-1
 
 vpc:
-  id: "vpc-07068c6f1bdb0eadf"
+  id: $AWS_VPC
   cidr: "192.168.0.0/16"
-  sharedNodeSecurityGroup: sg-0163139ef91930981
+  sharedNodeSecurityGroup: $AWS_SG
   subnets:
     public:
-      us-east-1a: { id: "subnet-03775b57170bf8cd9" }
-      us-east-1b: { id: "subnet-00be28d3aea88d233" }
+      us-east-1a: { id: $AWS_Subnet_01 }
+      us-east-1b: { id: $AWS_Subnet_02 }
 
 nodeGroups:
 - name: nodegroup-workers

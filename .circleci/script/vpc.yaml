@@ -62,7 +62,7 @@ Resources:
       RouteTableId: !Ref PublicRouteTable
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
-      
+
   PublicSubnet01:
     Type: AWS::EC2::Subnet
     Properties:
@@ -114,9 +114,13 @@ Resources:
 
 Outputs:
 
-  SubnetIds:
-    Description: Subnets IDs in the VPC
-    Value: !Join [ ",", [ !Ref PublicSubnet01, !Ref PublicSubnet02 ] ]
+  SubnetId01:
+    Description: Subnets 01 ID in the VPC
+    Value: !Ref PublicSubnet01
+
+  SubnetId02:
+    Description: Subnets 02 ID in the VPC
+    Value: !Ref PublicSubnet02
 
   SecurityGroups:
     Description: Security group for the cluster control plane communication with worker nodes

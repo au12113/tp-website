@@ -119,7 +119,8 @@ jobs:
           command: |
             export AWS_VPC=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='VpcId'].OutputValue" --output text)
             export AWS_SG=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SecurityGroups'].OutputValue" --output text)
-            export AWS_Subnets=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetIds'].OutputValue" --output text)
+            export AWS_Subnet_01=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId01'].OutputValue" --output text)
+            export AWS_Subnet_02=$(aws cloudformation describe-stacks --stack-name tp-website-vpc --query "Stacks[0].Outputs[?OutputKey=='SubnetId02'].OutputValue" --output text)
       - run:
           name: Install the eksctl tool
           command: |
@@ -137,19 +138,12 @@ jobs:
             fi
             $SUDO mv eksctl_download/eksctl /usr/local/bin/
             rmdir eksctl_download
-      - aws-eks/create-cluster:
-          aws-region: 'us-east-1'
-          cluster-name: tp-website
-          node-labels: "role=worker"
-          node-security-groups: $AWS_SG
-          node-type: t3.small
-          node-zones: us-east-1a,us-east-1b
-          nodegroup-name: nodegroup-workers
-          nodes: 1
-          vpc-cidr: 192.168.0.0/16
-          vpc-public-subnets: $AWS_Subnets
-          zones: us-east-1a,us-east-1b
       - run:
+          name: Create EKS Cluster
+          command: |
+            eksctl create cluster -f .circleci/script/eks.yaml
+      - run:
+          name: Apply Deployment to EKS Cluster
           command: |
             kubectl apply -f .circleci/script/deployment.yaml
             kubectl apply -f .circleci/script/service.yaml
