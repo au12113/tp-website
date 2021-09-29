@@ -139,11 +139,17 @@ jobs:
             $SUDO mv eksctl_download/eksctl /usr/local/bin/
             rmdir eksctl_download
       - run:
-          name: Create EKS Cluster
+          name: Create EKS cluster
           command: |
-            eksctl create cluster -f .circleci/script/eks.yaml
+            eksctl create cluster --name tp-website --region us-east-1 \
+            --nodegroup-name nodegroup-workers --node-type t3.small \
+            --nodes 1 --node-security-groups ${AWS_SG} \
+            --node-labels "role=worker" \
+            --node-zones us-east-1a,us-east-1b \
+            --vpc-cidr 192.168.0.0/16 \
+            --vpc-public-subnets: ${AWS_Subnet_01},${AWS_Subnet_02}
       - run:
-          name: Apply Deployment to EKS Cluster
+          name: Apply deployment and service config
           command: |
             kubectl apply -f .circleci/script/deployment.yaml
             kubectl apply -f .circleci/script/service.yaml
