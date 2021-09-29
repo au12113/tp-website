@@ -114,6 +114,7 @@ jobs:
           name: Install dependencies
           command: |
             sudo apt-get install sed
+      - kubernetes/install
       - run:
           name: Install the eksctl tool
           command: |
