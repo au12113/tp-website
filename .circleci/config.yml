@@ -144,7 +144,6 @@ jobs:
             eksctl create cluster --name tp-website --region us-east-1 \
             --nodegroup-name nodegroup-workers --node-type t3.small \
             --nodes 1 --node-security-groups ${AWS_SG} \
-            --node-labels "role=worker" \
             --node-zones us-east-1a,us-east-1b \
             --vpc-cidr 192.168.0.0/16 \
             --vpc-public-subnets ${AWS_Subnet_01},${AWS_Subnet_02}
