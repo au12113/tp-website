@@ -85,13 +85,21 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
-          docker_layer_caching: true
       - restore_cache:
           keys: ['backend-build']
       - run:
           name: Install dependencies
           command: |
             pip install awscli docker-compose
+      - run:
+          name: map data to environment file
+          command: |
+            cd backend
+            touch .env
+            echo DB_URI=${DB_URI} > .env
+            echo DB_USER=${DB_NAME} >> .env
+            echo DB_PASSWORD=${DB_PASSWORD} >> .env
+            echo DB_NAME=${DB_NAME} >> .env
       - run:
           name: build and push image to ECR
           command: |
@@ -105,7 +113,8 @@ jobs:
       - image: circleci/python:3.8.1
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 19.03.13
       - aws-cli/setup
       - run:
           name: Install dependencies
