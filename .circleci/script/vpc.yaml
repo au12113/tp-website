@@ -108,8 +108,8 @@ Resources:
         ToPort: 22
         CidrIp: 0.0.0.0/0
       - IpProtocol: tcp
-        FromPort: 30000
-        ToPort: 30000
+        FromPort: 3000
+        ToPort: 30306
         CidrIp: 0.0.0.0/0
 
 Outputs:
