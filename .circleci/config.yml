@@ -63,8 +63,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
+          version: 20.10.6
       - restore_cache:
           keys: ['backend-build']
       - run:
@@ -98,17 +97,15 @@ jobs:
           command: |
             cd backend
             aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/j1g2j9e9
-            docker build -t tp-website:0.03 .
-            docker tag tp-website:0.03 public.ecr.aws/j1g2j9e9/tp-website:0.03
-            docker push public.ecr.aws/j1g2j9e9/tp-website:0.03
+            docker build -t tp-website:latest .
+            docker tag tp-website:latest public.ecr.aws/j1g2j9e9/tp-website:latest
+            docker push public.ecr.aws/j1g2j9e9/tp-website:latest
   deploy_backend:
     docker:
       - image: circleci/python:3.8.1
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
+      - setup_remote_docker
       - aws-cli/setup
       - run:
           name: Install dependencies

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: tp-website-backend
-          image: public.ecr.aws/j1g2j9e9/tp-website:0.03
+          image: public.ecr.aws/j1g2j9e9/tp-website:latest
           ports:
             - containerPort: 3000
               name: tp-service
