@@ -15,12 +15,12 @@ const query = async (qString) => {
     try {
         conn = await pool.getConnection()
         result = await conn.query(qString)
+        return result
     } catch (err) {
         console.log(err)
         result = err
     } finally {
         if (conn) conn.end()
-        return result
     }
 }
 

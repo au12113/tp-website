@@ -21,6 +21,8 @@ class ProductDetail extends React.Component {
       return specTable.map((spec) => {
         if (!['name', 'สี'].includes(spec.header)) {
           return (<CollapseTable data={spec} key={spec.header} />)
+        } else {
+          return ''
         }
       })
     } else {
