@@ -1,8 +1,7 @@
 version: 2.1
 orbs:
-  aws-cli: circleci/aws-cli@2.0
-  aws-eks: circleci/aws-eks@1.1.0
-  kubernetes: circleci/kubernetes@0.4.0
+  cloud-run: circleci/gcp-cloud-run@1.0.2
+  docker: circleci/docker@1.7.0
 jobs:
   scan_and_build_frontend:
     docker:
@@ -21,7 +20,6 @@ jobs:
           command: |
             cd frontend
             npm run lint
-      # run test
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -39,11 +37,10 @@ jobs:
             npm audit fix
             npm install
       - run:
-          name: lint
+          name: lint source code
           command: |
             cd backend
             npm run lint
-      # run test
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
@@ -59,6 +56,12 @@ jobs:
             sudo apt-get install ncftp
       - restore_cache:
           keys: [frontend-build]
+      - run:
+          name: Set environment file
+          command: |
+            cd frontend
+            echo PORT=8080 > .env
+            echo REACT_APP_BACKEND_API=${REACT_APP_BACKEND_API} >> .env
       - run: 
           name: build frontend
           command: |
@@ -69,29 +72,57 @@ jobs:
   build_backend_docker_image:
     docker:
       - image: circleci/node:14.17.6
+    working_directory: ~/backend
     steps:
-      - checkout
+      - checkout:
+          path: ~/backend
       - setup_remote_docker:
-          version: 20.10.6
+          version: 19.03.13
       - restore_cache:
-          keys: ['backend-build']
+          keys: ['backend-build', 'gcloud-key']
       - run:
-          name: build backend image and run
+          name: Create GCP credential
+          command: |
+            json=$(cat <<-END
+            {
+              "type": "service_account", 
+              "project_id": "tangpark", 
+              "private_key_id": "${GCP_PRIV_ID}", 
+              "private_key": "${GCP_PRIV_KEY}", 
+              "client_email": "${GCP_CLIENT_EMAIL}",
+              "client_id": "${GCP_CLIENT_ID}",
+              "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+              "token_uri": "https://oauth2.googleapis.com/token",
+              "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+              "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tangpark-backend%40tangpark.iam.gserviceaccount.com"
+            }
+            END
+            )
+            echo "${json}"
+            cd backend/.cred
+            echo "${json}" > tangpark.json
+      - run:
+          name: Build backend image and run
           command: |
             cd backend
-            dockerpath="wasupont/tp-backend"
-            docker build --tag tp-backend .
+            dockerpath="asia-southeast1-docker.pkg.dev/tangpark/tp-website/tp-website-backend"
+            docker build --tag tp-website-backend:latest .
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             echo "Docker ID and Image: $dockerpath"
-            docker image tag tp-backend $dockerpath
+            docker image tag tp-website-backend:latest $dockerpath
             docker image push $dockerpath
-            docker run -d -p 3000:3000 -p 3306:3306 -e ENV=DEBUG wasupont/tp-backend
-
+      - save_cache:
+          paths: [~/backend/.cred]
+          key: gcloud-key
+      # docker run -d -p 3000:3000 -e ENV=DEBUG wasupont/tp-backend
+  
   build_and_push_backend_image:
     docker:
       - image: circleci/python:3.8.1
+    working_directory: ~/backend
     steps:
-      - checkout
+      - checkout:
+          path: ~/backend
       - setup_remote_docker:
           version: 19.03.13
       - restore_cache:
@@ -103,7 +134,6 @@ jobs:
       - run:
           name: map data to environment file
           command: |
-            cd backend
             touch .env
             echo DB_URI=${DB_URI} > .env
             echo DB_USER=${DB_USER} >> .env
@@ -112,12 +142,31 @@ jobs:
       - run:
           name: build and push image to ECR
           command: |
-            cd backend
             aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/j1g2j9e9
             docker build -t tp-website:latest .
             docker tag tp-website:latest public.ecr.aws/j1g2j9e9/tp-website:latest
             docker push public.ecr.aws/j1g2j9e9/tp-website:latest
   deploy_backend:
+    docker:
+      - image: circleci
+    working_directory: ~/backend
+    steps:
+      - checkout:
+          path: ~/backend
+      - restore_cache:
+          keys: ['gcloud-key']
+      - setup_remote_docker:
+          version: 19.03.13
+      - cloud-run/init
+      - cloud-run/deploy:
+          args: '--max-instances=2 --port=3000'
+          image: 'asia-southeast1-docker.pkg.dev/tangpark/tp-website/tp-website-backend:latest'
+          platform: managed
+          region: asia-southeast1
+          service-name: "wasupon.tphq@gmail.com"
+          unauthenticated: true
+
+  deploy_aws_backend:
     docker:
       - image: circleci/python:3.8.1
     steps:
@@ -173,13 +222,22 @@ jobs:
             kubectl apply -f .circleci/script/service.yaml
 
 workflows:
-  default:
+  scan_and_build:
     jobs:
-      - scan_and_build_frontend
       - scan_backend
-      - deploy_frontend:
-          requires: [scan_and_build_frontend]
+      - scan_and_build_frontend
+      - docker/hadolint:
+          dockerfiles: backend/Dockerfile
       - build_and_push_backend_image:
-          requires: [scan_backend]
+          requires: [scan_backend, docker/hadolint]
+          filters:
+            branches:
+              only: main
+  deploy_gcp:
+    jobs:
       - deploy_backend:
           requires: [build_and_push_backend_image]
+      - deploy_frontend:
+          filters:
+            branches:
+              only: main
