@@ -30,8 +30,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/contactus', async (req, res) => {
-    let result = await Database.query('SELECT * FROM branch order by province')
-    return res.jsonp(_.groupBy(result, 'province'))
+    let result = await Database.query('SELECT * FROM v_branch_order_province')
+    let grouped_branch = _.groupBy(result, 'province')
+    return res.jsonp(grouped_branch)
 })
 
 app.get('/products', async (req, res) => {
