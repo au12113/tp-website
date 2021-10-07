@@ -20,7 +20,8 @@ backend/build
 .env.test.local
 .env.production.local
 .env.development
-.cred/
+backend/.cred/*
+frontend/.cred/*
 
 # linting
 frontend/.eslintcache
