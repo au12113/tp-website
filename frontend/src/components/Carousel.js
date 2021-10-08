@@ -1,14 +1,18 @@
 import React from 'react'
+import TPBackend from '../apis/tpBackend'
 import './css/animation.css'
 
 class Carousel extends React.Component {
-    state = { carouselPage: 0 }
+    state = { carouselPage: 0, contents: [] }
+    componentDidMount () {
+      this.getBannerList()
+    }
 
-    contents = [
-      { index: 0, content: 'Page1', img: '/img/banner/V-Cross banner', link: process.env.PUBLIC_URL },
-      { index: 1, content: 'Page2', img: '/img/banner/Spark Banner', link: process.env.PUBLIC_URL },
-      { index: 2, content: 'Page3', img: '/img/banner/truck banner', link: process.env.PUBLIC_URL }
-    ]
+    getBannerList = async () => {
+      const response = await TPBackend.get('/banner')
+      console.log(response)
+      this.setState({ contents: response.data })
+    }
 
     nextCarouselPage = () => { this.setState({ carouselPage: (this.state.carouselPage + 1) % this.contents.length }) }
     prevCarouselPage = () => {
@@ -20,25 +24,25 @@ class Carousel extends React.Component {
     }
 
     carouselIndexRender = () => {
-      return this.contents.map((item) => {
+      return this.state.contents.map((item, index) => {
         return (
                 <li data-target="#carouselExampleIndicators"
-                    key={item.index}
-                    data-slide-to={item.index}
-                    className={`${this.state.carouselPage === parseInt(item.index) ? 'active' : ''}`}
-                    onClick={() => { this.setState({ carouselPage: item.index }) }}
+                    key={index}
+                    data-slide-to={index}
+                    className={`${this.state.carouselPage === parseInt(index) ? 'active' : ''}`}
+                    onClick={() => { this.setState({ carouselPage: index }) }}
                 ></li>
         )
       })
     }
 
     carouselContentRender = () => {
-      return this.contents.map(item => {
+      return this.state.contents.map((item, index) => {
         return (
-                <div key={item.index} className={'d-flex justify-content-center carousel-item '}>
-                    <div className={`${this.state.carouselPage === parseInt(item.index) ? 'd-block' : 'd-none'}`}>
-                        <img src={`${item.img}.png`} className="d-none d-lg-block" style={{ width: '100%', height: 'auto' }} alt="" />
-                        <img src={`${item.img}-Mobile.png`} className="d-lg-none" style={{ width: '100%', height: 'auto' }} alt="" />
+                <div key={index} className={'d-flex justify-content-center carousel-item '}>
+                    <div className={`${this.state.carouselPage === parseInt(index) ? 'd-block' : 'd-none'}`}>
+                        <img src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}.png`} className="d-none d-lg-block" style={{ width: '100%', height: 'auto' }} alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}-Mobile.png`} className="d-lg-none" style={{ width: '100%', height: 'auto' }} alt="" />
                     </div>
                 </div>
         )

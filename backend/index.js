@@ -7,8 +7,6 @@ const port = process.env.PORT || 3000
 const Database = require('./db/database')
 
 require('dotenv').config()
-require('@google-cloud/debug-agent').start({ serviceContext: { enableCanary: true } });
-
 if(process.env.ENV==='PROD') {
     require('@google-cloud/debug-agent').start({ serviceContext: { enableCanary: true } });
 }
@@ -30,6 +28,19 @@ app.get('/', (req, res) => {
     res.jsonp({
         "name": "index"
     })
+})
+
+app.get('/banner', async(req, res) => {
+    let result = await Database.query(
+        "SELECT fileName, url FROM banner \
+        WHERE isPromotion is false \
+        OR ( \
+            isPromotion is true \
+            AND CURRENT_DATE() < expiredDate \
+        ) \
+        ORDER BY id DESC \
+        LIMIT 5")
+    return res.jsonp(result)
 })
 
 app.get('/contactus', async (req, res) => {
