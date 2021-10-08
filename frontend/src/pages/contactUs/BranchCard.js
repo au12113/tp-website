@@ -7,7 +7,8 @@ class BranchCard extends React.Component {
 
   arrayRender = (x) => {
     if (x.includes(',')) {
-      return x.split(',').map((item, index) => { return <a href={`tel:${item}`} key={item}>{item}{index === x.length - 1 ? '' : ', '}</a> })
+      const list = x.split(',')
+      return list.map((item, index) => { return <a href={`tel:${item}`} key={item}>{item}{index === list.length - 1 ? '' : ', '}</a> })
     } else {
       return <a href={`tel:${x}`} key={x}>{x}</a>
     }

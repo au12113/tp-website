@@ -9,6 +9,9 @@ const Database = require('./db/database')
 require('dotenv').config()
 require('@google-cloud/debug-agent').start({ serviceContext: { enableCanary: true } });
 
+if(process.env.ENV==='PROD') {
+    require('@google-cloud/debug-agent').start({ serviceContext: { enableCanary: true } });
+}
 app.set('trust proxy', true)
 
 app.use(cors())

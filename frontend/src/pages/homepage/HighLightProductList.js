@@ -24,8 +24,8 @@ class HighlightProductList extends React.Component {
       <div>
         {this.state.list.map((item, index) => {
           return (
-            <div key={item.web_category}>
-              <HighlightProduct data={item} index={index} imageList={this.filterForEachProduct(item.web_category)} />
+            <div key={`${item.webCategory}-container`}>
+              <HighlightProduct key={item.webCategory} data={item} index={index} imageList={this.filterForEachProduct(item.webCategory)} />
             </div>
           )
         })}
