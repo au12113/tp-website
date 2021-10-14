@@ -7,6 +7,7 @@ import './style.css'
 import './font.css'
 
 import { Header, Footer } from './components/'
+import CacheBuster from './helpers/cacheBuster'
 import Homepage from './pages/homepage/Homepage'
 import ProductGallery from './pages/productGallery/ProductGallery'
 import BrieflyProductDetail from './pages/brieflyProductDetail/BrieflyProductDetail'
@@ -23,36 +24,47 @@ class App extends React.Component {
 
   render () {
     return (
-            <div id="wrap" className="disable-dbl-tap-zoom">
+      <CacheBuster>
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+          if (loading) return null
+          if (!loading && !isLatestVersion) {
+            refreshCacheAndReload()
+          }
+
+          return (
+            <Router>
+              <div id="wrap" className="disable-dbl-tap-zoom">
                 <Header />
                 <div id="context">
-                    <Switch>
-                        <Route path="/products">
-                            <ProductGallery />
-                        </Route>
-                        <Route path="/product/:productId">
-                            <BrieflyProductDetail />
-                        </Route>
-                        <Route path="/blog">
-                            Blog
-                        </Route>
-                        <Route path="/contact">
-                            <ContactUs />
-                        </Route>
-                        <Route path="/">
-                            <Homepage />
-                        </Route>
-                    </Switch>
+                  <Switch>
+                    <Route path="/products">
+                      <ProductGallery />
+                    </Route>
+                    <Route path="/product/:productId">
+                      <BrieflyProductDetail />
+                    </Route>
+                    <Route path="/blog">
+                      Blog
+                    </Route>
+                    <Route path="/contact">
+                      <ContactUs />
+                    </Route>
+                    <Route path="/">
+                      <Homepage />
+                    </Route>
+                  </Switch>
                 </div>
                 <Footer />
-            </div>
+              </div>
+            </Router>
+          )
+        }}
+      </CacheBuster>
     )
   }
 }
 
 ReactDOM.render(
-    <Router>
-        <App />
-    </Router>,
-    document.querySelector('#root')
+  <App />,
+  document.querySelector('#root')
 )

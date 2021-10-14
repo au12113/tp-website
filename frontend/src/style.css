@@ -57,6 +57,18 @@ div.box {
     touch-action: manipulation;
 }
 
+.btn.btn-tangpark {
+    background-color: #ed1b24;
+    color:whitesmoke;
+    font-size: 1.8rem;
+}
+
+.btn.btn-tangpark:hover {
+    background-color: #ed1b24;
+    color: #c8c8c8;
+    font-size: 1.8rem;
+}
+
 @media only screen and (min-width: 992px) {
     * {
         font-size: 16px;
