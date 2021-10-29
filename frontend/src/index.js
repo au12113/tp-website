@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './style.css'
@@ -41,6 +42,10 @@ class App extends React.Component {
                       <ProductGallery />
                     </Route>
                     <Route path="/product/:productId">
+                      <Helmet>
+                        <title>Nested Title</title>
+                        <meta name="description" content="Nested component" />
+                      </Helmet>
                       <BrieflyProductDetail />
                     </Route>
                     <Route path="/blog">

@@ -26,10 +26,6 @@ h5.text-light {
     margin: auto auto auto auto;
 }
 
-#carouselExampleIndicators {
-    background-color: #343a40;
-}
-
 div.noPadding {
     padding-left: 0;
     padding-right: 0;
@@ -45,12 +41,6 @@ div.noMargin {
 div.box {
     height: 800px;
     background-color: whitesmoke;
-}
-
-.carousel {
-    width: 100%;
-    height: 30rem;
-    margin: auto;
 }
 
 .disable-dbl-tap-zoom {

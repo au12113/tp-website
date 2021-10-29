@@ -4,9 +4,9 @@ const getAllFileName = (dir, subDir = null) => {
     case 'products':
       nameList = require.context('../../public/img/products/', true, /\.(png|jpe?g|svg)$/).keys()
       break
-    case 'banner':
-      nameList = require.context('../../public/img/banner/', true, /\.(png|jpe?g|svg)$/).keys()
-      break
+    // case 'banner':
+    //   nameList = require.context('../../public/img/banner/', true, /\.(png|jpe?g|svg)$/).keys()
+    //   break
     case 'pdf':
       nameList = require.context('../../public/pdf/', true, /\.(pdf)$/).keys()
       break
