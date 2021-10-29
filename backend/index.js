@@ -32,7 +32,6 @@ app.get('/', (req, res) => {
 
 app.get('/banner', async(req, res) => {
     let result = await Database.query(
-        "SELECT fileName, url FROM banner \
         "SELECT fileName, fileNameMobile, url FROM banner \
         WHERE isPromotion is false \
         OR ( \
