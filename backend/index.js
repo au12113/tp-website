@@ -56,7 +56,11 @@ app.get('/products', async (req, res) => {
 
 app.get('/product/:web_category', async (req, res) => {
     let data = await Database.query(`SELECT * FROM product_link WHERE id like '${req.params.web_category}' `)
-    let priceList = await Database.query(`SELECT id as code, description, price FROM products WHERE webCategory like '${req.params.web_category}' ORDER BY code asc`)
+    let priceList = await Database.query(`
+        SELECT description, MIN(price) as price FROM products
+        WHERE webCategory like '${req.params.web_category}' 
+        AND isCancel is FALSE 
+        GROUP BY description ORDER BY price`)
     return res.jsonp({
         ...data[0],
         "priceList": priceList
