@@ -3,6 +3,11 @@
   margin-right: 1rem;
 }
 
+.product-header {
+  max-height: 100px;
+  object-fit: contain;
+}
+
 .btn.btn-tangpark {
   background-color: #ed1b24;
   color:whitesmoke;

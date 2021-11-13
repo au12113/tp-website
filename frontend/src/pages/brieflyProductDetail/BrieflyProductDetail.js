@@ -29,6 +29,7 @@ class BrieflyProductDetail extends React.Component {
     const response = await TPBackend.get(`/product/${this.webCategory}`)
     const { list, logo, cover } = getAllFileName('products', this.webCategory)
     const prodImgs = list.map(filtered => { return { image: this.getPathName(filtered), caption: `${this.webCategory}_${filtered.split('.')[0]}` } })
+    console.log(prodImgs)
     this.setState({ product: response.data, imgList: prodImgs, logo: this.getPathName(logo), cover: this.getPathName(cover) })
   }
 
@@ -81,7 +82,7 @@ class BrieflyProductDetail extends React.Component {
           </Helmet>
           <div className="mt-3 d-flex justify-content-center">
             {/* <h1>{`Isuzu ${this.webCategory}`}</h1> */}
-            <img src={this.state.logo} />
+            <img src={this.state.logo} className="product-header" />
           </div>
           <div className="row d-flex mx-0 justify-content-center">
             <div className="row col-10 col-lg-6 d-flex justify-content-center">
