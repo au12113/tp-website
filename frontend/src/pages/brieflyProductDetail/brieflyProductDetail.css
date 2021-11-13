@@ -1,0 +1,34 @@
+.download-brochure {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.btn.btn-tangpark {
+  background-color: #ed1b24;
+  color:whitesmoke;
+}
+
+.btn.btn-tangpark:hover {
+  background-color: #ed1b24;
+  color: #c8c8c8;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0px;
+}
+
+#table-wrapper {
+  position: relative;
+}
+
+#table-wrapper table {
+  width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  .download-brochure {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+}

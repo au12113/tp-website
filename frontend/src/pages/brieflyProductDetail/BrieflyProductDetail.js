@@ -1,7 +1,10 @@
 import React from 'react'
 import TPBackend from '../../apis/tpBackend'
 
+import { Helmet } from 'react-helmet'
 import { getAllFileName } from '../../helpers/getFilesNameInDir'
+import { ProductSlider } from '../../components'
+import './brieflyProductDetail.css'
 
 const HeaderMapping = [
   { id: 'code', TH: 'รหัส', EN: 'Code' },
@@ -10,19 +13,23 @@ const HeaderMapping = [
 ]
 
 class BrieflyProductDetail extends React.Component {
+  state = { product: null, imgList: [], logo: null, cover: null }
+
   webCategory = window.location.pathname.split('/').pop()
-  imageList = getAllFileName('products', this.series)
-  state = { product: null }
 
   componentDidMount = () => {
-    const nameList = getAllFileName('products')
-    console.log(nameList)
-    this.getProducDetail()
+    this.getProductDetail()
   }
 
-  getProducDetail = async () => {
+  getPathName = (filename) => {
+    return `${process.env.PUBLIC_URL}/img/products/${this.webCategory}/${filename}`
+  }
+
+  getProductDetail = async () => {
     const response = await TPBackend.get(`/product/${this.webCategory}`)
-    this.setState({ product: response.data })
+    const { list, logo, cover } = getAllFileName('products', this.webCategory)
+    const prodImgs = list.map(filtered => { return { image: this.getPathName(filtered), caption: `${this.webCategory}_${filtered.split('.')[0]}` } })
+    this.setState({ product: response.data, imgList: prodImgs, logo: this.getPathName(logo), cover: this.getPathName(cover) })
   }
 
   mapHeaderName = (oid) => {
@@ -32,7 +39,7 @@ class BrieflyProductDetail extends React.Component {
 
   renderTable = (list) => {
     return (
-      <table id="table-wrapper" className="col-10 col-lg-9 table ">
+      <table id="table-wrapper" className="col-10 table ">
         <thead className="thead-dark">
           <tr>
             {
@@ -66,38 +73,40 @@ class BrieflyProductDetail extends React.Component {
   }
 
   render () {
-    if (this.state.product != null) {
-      const { id, brochureUrl, priceList } = this.state.product
+    if (this.state.product !== null) {
       return (
-        <div className="row d-flex mx-0 justify-content-center">
-          <div className="row col-10 col-lg-8 d-flex justify-content-center">
-            <div className="row col-8 col-lg-6">
-              <img
-                alt={this.state.product.id}
-                className="col-12"
-                src={`${process.env.PUBLIC_URL}/img/products/${id}/cover.png`}
-              />
+        <>
+          <Helmet>
+            <title>{`Isuzu ${this.webCategory} | ISUZU Tangpark Ubon Group`}</title>
+          </Helmet>
+          <div className="mt-3 d-flex justify-content-center">
+            {/* <h1>{`Isuzu ${this.webCategory}`}</h1> */}
+            <img src={this.state.logo} />
+          </div>
+          <div className="row d-flex mx-0 justify-content-center">
+            <div className="row col-10 col-lg-6 d-flex justify-content-center">
+              <div className="row">
+                <ProductSlider slides={this.state.imgList} />
+              </div>
+              <div className="button-container col-6 col-lg-8">
+                <button
+                  type="button"
+                  className="btn btn-tangpark btn-lg btn-block download-brochure"
+                  onClick={() => window.open(process.env.PUBLIC_URL + '/pdf/' + this.state.product.brochureUrl, '_blank')}
+                >
+                  <i className="bi bi-file-earmark-pdf-fill" />ดาวน์โหลดโบรชัวร์
+                </button>
+              </div>
             </div>
-            <div className="col-12">
-              <button
-                type="button"
-                className="btn btn-tangpark btn-lg btn-block"
-                onClick={() => window.open(process.env.PUBLIC_URL + '/pdf/' + brochureUrl, '_blank')}
-              >
-                <i className="bi bi-file-earmark-pdf-fill" style={{ fontSize: '1.5rem', marginRight: '1rem' }} />ดาวน์โหลดโบรชัวร์
-              </button>
+            <div className="row col-10 col-lg-6 mt-3 d-flex justify-content-center">
+              {this.renderTable(this.state.product.priceList)}
             </div>
           </div>
-          <div className="row col-10 mt-3 d-flex justify-content-center">
-            {this.renderTable(priceList)}
-          </div>
-        </div>
+        </>
       )
     } else {
       return (
-        <div>
-          Loading
-        </div>
+        <h1>Loading...</h1>
       )
     }
   }

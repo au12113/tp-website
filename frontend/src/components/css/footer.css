@@ -1,5 +1,6 @@
-#footer {
-    /* background: linear-gradient(175deg, rgba(255, 255, 255, 1) 0%, rgba(52, 58, 64, 0.80) 92%, rgba(52, 58, 64, 1) 100%); */
+.social-media-logo {
+    height: 40px;
+    width: 40px;
 }
 
 .footer-address>span, .white-link>a {

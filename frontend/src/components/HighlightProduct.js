@@ -1,14 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+import { getAllFileName } from '../helpers/getFilesNameInDir'
 import './css/highlight-products.css'
 
 class HighlightProduct extends React.Component {
-  getLogoSrc = (series, special = null) => {
-    return process.env.PUBLIC_URL + '/img/products/' + series + (special !== null ? `/${special}` : '') + '/logo.svg'
+  state = { logo: undefined, cover: undefined }
+  webCategory = this.props.data.webCategory
+
+  componentDidMount () {
+    this.getProductImage()
   }
 
-  getCoverSrc = (series, special = null) => {
-    return process.env.PUBLIC_URL + '/img/products/' + series + (special !== null ? `/${special}` : '') + '/cover.png'
+  getPathName = (name) => {
+    return `${process.env.PUBLIC_URL}/img/products/${this.webCategory}/${name}`
+  }
+
+  getProductImage = async () => {
+    const { logo, cover } = getAllFileName('highlight', this.webCategory)
+    this.setState({ logo: this.getPathName(logo), cover: this.getPathName(cover) })
   }
 
   isTooLong = (x) => {
@@ -25,7 +35,7 @@ class HighlightProduct extends React.Component {
       <div className="col-12">
         <div className={`row d-flex ${this.props.index % 2 === 0 ? 'flex-row' : 'flex-row-reverse reverse'} background-container py-4`}>
           <div className="col-12 col-lg-6 highlight-wrapper">
-            <img src={this.getCoverSrc(webCategory)} alt={webCategory} className="zoom" style={{ height: '18em', width: '100%', objectFit: 'contain' }} />
+            <img src={this.state.cover} alt={webCategory} className="product zoom" style={{ height: '18em', width: '100%', objectFit: 'contain' }} />
           </div>
           <div className="col-12 col-lg-6 d-flex h-100 justify-content-center my-auto">
             <div className="align-middle">
@@ -34,8 +44,8 @@ class HighlightProduct extends React.Component {
                   className={`d-flex flex-column ${this.isTooLong(webCategory) ? '' : 'flex-xl-row'} justify-content-center align-items-baseline`}
                   to={`${process.env.PUBLIC_URL + '/product/' + webCategory}`}
                 >
-                  <img src={this.getLogoSrc(webCategory)} alt="series" className="series-name" />
-                  <span className="logo-name mx-auto mx-xl-2">{webCategory.toUpperCase()}</span>
+                  <img src={this.state.logo} alt="series" className="product series-name" />
+                  {/* <span className="logo-name mx-auto mx-xl-2">{webCategory.toUpperCase()}</span> */}
                 </Link>
               </div>
               <div className="row d-flex justify-content-center">

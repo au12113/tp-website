@@ -25,18 +25,18 @@ const Footer = () => {
                 </div>
                 <div className="col-12 col-lg-3 ml-lg-0 mb-2 justify-content-lg-end">
                     <div className="row pl-3 mt-2 mr-0">
-                        <a href="https://www.facebook.com/isuzutp" target="_blank" rel="noopener noreferrer"><img src={fbLogo} alt="" height="40px" width="40px" /></a>
+                        <a href="https://www.facebook.com/isuzutp" target="_blank" rel="noopener noreferrer"><img src={fbLogo} className="social-media-logo" alt="เพจกลุ่มอีซูซุตังปักอุบล" /></a>
                         <span className="d-flex pl-2 align-items-center white-link"><a href="https://www.facebook.com/isuzutp" target="_blank" rel="noopener noreferrer">กลุ่มอีซูซุตังปักอุบล</a></span>
                     </div>
                     <div className="row pl-3 mt-2 mr-0">
-                            <a href="https://www.facebook.com/IsuzuTPTruck" target="_blank" rel="noopener noreferrer"><img src={fbLogo} alt="" height="40px" width="40px" /></a>
+                            <a href="https://www.facebook.com/IsuzuTPTruck" target="_blank" rel="noopener noreferrer"><img src={fbLogo} className="social-media-logo" alt="เพจรถบรรทุกกลุ่มอีซูซุตังปักอุบล" /></a>
                             <span className="d-flex pl-2 align-items-center white-link">
                                 <a href="https://www.facebook.com/IsuzuTPTruck" target="_blank" rel="noopener noreferrer">รถบรรทุกกลุ่มอีซูซุตังปักอุบล</a>
                             </span>
                     </div>
                     <div className="row pl-3 mt-2 mr-0">
                         <a href="https://lin.ee/4Zd0dcL" target="_blank" rel="noopener noreferrer">
-                            <img src={lineLogo} alt="" height="40px" width="40px" /></a>
+                            <img src={lineLogo} className="social-media-logo" alt="ไลน์กลุ่มอีซูซุตังปักอุบล" /></a>
                         <span className="d-flex pl-2 align-items-center white-link">
                             <a href="https://lin.ee/4Zd0dcL" target="_blank" rel="noopener noreferrer">กลุ่มอีซูซุตังปักอุบล</a></span>
                     </div>

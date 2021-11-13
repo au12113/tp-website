@@ -26,9 +26,9 @@
 }
 
 .series-name {
-    margin-left: 1rem;
     display: block;
-    height: 2rem;
+    object-fit: contain;
+    max-height: 5rem;
 }
 
 .product-image {
