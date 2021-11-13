@@ -1,0 +1,33 @@
+.slide-image-container {
+  max-width: 80%;
+  min-height: 400px;
+}
+
+.slide-image {
+  max-width: 100%;
+  min-height: 400px;
+  object-fit: contain;
+}
+
+.styled-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow {
+  color: black;
+  font-size: 3rem;
+}
+
+.left.arrow {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
+
+.right.arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}

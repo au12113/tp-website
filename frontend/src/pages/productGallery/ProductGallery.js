@@ -17,7 +17,7 @@ class ProductGallery extends React.Component {
     if (this.state.products.length > 0) {
       return (<div className="container">
         <div className="col-12">
-          <img src={`${process.env.PUBLIC_URL}/img/header.png`} alt="" height="80rex" />
+          <img src={`${process.env.PUBLIC_URL}/img/header.png`} className="product" alt="" height="80rex" />
         </div>
         <ProductList listName="pickup-list" products={this.state.products[0]} />
         <ProductList listName="suv-list" products={this.state.products[1]} />
@@ -27,7 +27,7 @@ class ProductGallery extends React.Component {
       return (
         <div className="container">
           <div className="col-12">
-            <img src={`${process.env.PUBLIC_URL}/img/header.png`} alt="" height="80rex" />
+            <img src={`${process.env.PUBLIC_URL}/img/header.png`} className="product" alt="" height="80rex" />
           </div>
           Loading
         </div>

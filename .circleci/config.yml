@@ -13,8 +13,8 @@ jobs:
           name: scan and install dependencies
           command: |
             cd ~/project/frontend
-            npm install --legacy-peer-deps
-            npm audit fix
+            npm install --legacy-peer-deps 
+            npm audit fix --legacy-peer-deps --production
             npm install
       - run:
           name: lint

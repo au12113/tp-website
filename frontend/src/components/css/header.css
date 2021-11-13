@@ -27,6 +27,10 @@ li.nav-item {
     height: 35px;
 }
 
+nav > .active {
+    background-color: transparent;
+}
+
 @media only screen and (max-width: 991px) {
     .header-logo {
         height: 50px;

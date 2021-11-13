@@ -1,10 +1,10 @@
 import React from 'react'
 
 import TPBackend from '../apis/tpBackend'
-import './css/carousel.css'
+import './css/homepage-carousel.css'
 import './css/animation.css'
 
-class Carousel extends React.Component {
+class HomepageCarousel extends React.Component {
   state = { carouselPage: 0, contents: [] }
   componentDidMount () {
     this.getBannerList()
@@ -45,7 +45,7 @@ class Carousel extends React.Component {
             <picture>
               <source media="(max-width: 991px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileNameMobile}`} />
               <source media="(min-width: 992px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} />
-              <img src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} className="d-block" style={{ width: '100%', objectFit: 'fill' }} alt={item.fileName} />
+              <img src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} className="d-block product" style={{ width: '100%', objectFit: 'fill' }} alt={item.fileName} />
             </picture>
           </div>
         </div>
@@ -75,4 +75,4 @@ class Carousel extends React.Component {
   }
 }
 
-export default Carousel
+export default HomepageCarousel

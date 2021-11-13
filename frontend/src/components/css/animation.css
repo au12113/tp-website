@@ -5,19 +5,19 @@
     will-change: opacity, visibility;
 }
 
-.left {
+.slide-left {
     transform: translate(-10vw, 0vh);
 }
 
-.right {
+.slide-right {
     transform: translate(10vw, 0vh);
 }
 
-.up {
+.slide-up {
     transform: translate(0vw, -10vh);
 }
 
-.down {
+.slide-down {
     transform: translate(0vw, 10vh);
 }
 .fade-in-section.is-visible {

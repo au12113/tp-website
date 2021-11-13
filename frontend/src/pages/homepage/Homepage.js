@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Carousel } from '../../components'
+import { HomepageCarousel } from '../../components'
 import OurService from './OurService'
 import HighlightProductList from './HighLightProductList'
 import TPBackend from '../../apis/tpBackend'
@@ -34,7 +34,7 @@ class Homepage extends React.Component {
   render () {
     return (
       <div>
-        <Carousel />
+        <HomepageCarousel />
         <OurService />
         {this.renderProductList()}
       </div>

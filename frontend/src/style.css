@@ -6,6 +6,15 @@ html {
     font-size: 16px;
 }
 
+img > .product {
+    display: block;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
 #root {
     min-height: 100vh;
 }
@@ -15,7 +24,7 @@ html {
 }
 
 #context {
-    min-height: 100vh;
+    min-height: calc(100vh - 258px - 1rem);
 }
 
 h4.text-light {
@@ -39,24 +48,12 @@ div.noMargin {
 /* For Blank Content */
 
 div.box {
-    height: 800px;
+    /* height: 800px; */
     background-color: whitesmoke;
 }
 
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
-}
-
-.btn.btn-tangpark {
-    background-color: #ed1b24;
-    color:whitesmoke;
-    font-size: 1.8rem;
-}
-
-.btn.btn-tangpark:hover {
-    background-color: #ed1b24;
-    color: #c8c8c8;
-    font-size: 1.8rem;
 }
 
 @media only screen and (min-width: 992px) {
