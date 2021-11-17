@@ -40,7 +40,7 @@ class BrieflyProductDetail extends React.Component {
 
   renderTable = (list) => {
     return (
-      <table id="table-wrapper" className="col-10 table ">
+      <table id="table-wrapper" className="col-12 col-lg-10 table ">
         <thead className="thead-dark">
           <tr>
             {
@@ -85,11 +85,11 @@ class BrieflyProductDetail extends React.Component {
             <img src={this.state.logo} className="product-header" />
           </div>
           <div className="row d-flex mx-0 justify-content-center">
-            <div className="row col-10 col-lg-6 d-flex justify-content-center">
-              <div className="row">
+            <div className="row col-12 col-lg-6 d-flex justify-content-center">
+              <div className="row col-12 p-0">
                 <ProductSlider slides={this.state.imgList} />
               </div>
-              <div className="button-container col-6 col-lg-8">
+              <div className="button-container mt-2 mt-lg-0 col-10 col-lg-8">
                 <button
                   type="button"
                   className="btn btn-tangpark btn-lg btn-block download-brochure"
@@ -99,7 +99,7 @@ class BrieflyProductDetail extends React.Component {
                 </button>
               </div>
             </div>
-            <div className="row col-10 col-lg-6 mt-3 d-flex justify-content-center">
+            <div className="row col-12 col-lg-6 mt-3 d-flex justify-content-center">
               {this.renderTable(this.state.product.priceList)}
             </div>
           </div>

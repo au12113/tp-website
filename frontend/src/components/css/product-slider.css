@@ -1,3 +1,14 @@
+.slider-page {
+  display: block;
+  background-color: rgba(30, 30, 30, 0.3);
+  color: whitesmoke;
+  padding: 5px 20px;
+  width: 10%;
+  position: absolute;
+  left: 45%;
+  bottom: 68px;
+}
+
 .slide-image-container {
   max-width: 80%;
   min-height: 400px;
@@ -30,4 +41,40 @@
   position: absolute;
   top: 50%;
   right: 20px;
+}
+
+@media only screen and (max-width: 991px) {
+  .slider-page {
+    width: 20%;
+    left: 40%;
+    bottom: 1.5rem;
+  }
+
+  .slide-image-container {
+    max-width: 90%;
+    min-height: 250px;
+  }
+
+  .slide-image {
+    max-width: 100%;
+    min-height: 250px;
+    object-fit: contain;
+  }
+
+  .arrow {
+    color: black;
+    font-size: 1.5rem;
+  }
+
+  .left.arrow {
+    position: absolute;
+    top: 50%;
+    left: -5px;
+  }
+  
+  .right.arrow {
+    position: absolute;
+    top: 50%;
+    right: -5px;
+  }
 }
