@@ -6,6 +6,11 @@ import './css/animation.css'
 
 class HomepageCarousel extends React.Component {
   state = { carouselPage: 0, contents: [] }
+  _swipe = { x: null }
+
+  minTouchDistance = 50
+  minDragDistance = 60
+
   componentDidMount () {
     this.getBannerList()
   }
@@ -22,6 +27,40 @@ class HomepageCarousel extends React.Component {
         ? this.state.contents.length + this.state.carouselPage - 1
         : this.state.carouselPage - 1
     })
+  }
+
+  _onTouchStart = (e) => {
+    const touch = e.touches[0]
+    this._swipe = { x: touch.clientX }
+  }
+
+  _onTouchEnd = (e) => {
+    const touch = e.changedTouches[0]
+    const changed = touch.clientX - this._swipe.x
+    const absX = Math.abs(changed)
+    if (absX > this.minTouchDistance) {
+      if (changed > 0) {
+        this.prevCarouselPage()
+      } else {
+        this.nextCarouselPage()
+      }
+    }
+  }
+
+  _onDragStart = (e) => {
+    this._swipe.x = e.clientX
+  }
+
+  _onDragEnd = (e) => {
+    const changed = e.clientX - this._swipe.x
+    const absX = Math.abs(changed)
+    if (absX > this.minDragDistance) {
+      if (changed > 0) {
+        this.prevCarouselPage()
+      } else {
+        this.nextCarouselPage()
+      }
+    }
   }
 
   carouselIndexRender = () => {
@@ -55,7 +94,16 @@ class HomepageCarousel extends React.Component {
 
   render () {
     return (
-      <div id="myCarousel" className="carousel slide" data-ride="carousel" style={{ height: 'auto' }}>
+      <div
+        id="myCarousel"
+        className="carousel slide"
+        onDragStart={this._onDragStart}
+        onDragEnd={this._onDragEnd}
+        onTouchStart={this._onTouchStart}
+        onTouchEnd={this._onTouchEnd}
+        data-ride="carousel"
+        style={{ height: 'auto' }}
+      >
         <ol className="carousel-indicators">
           {this.carouselIndexRender()}
         </ol>

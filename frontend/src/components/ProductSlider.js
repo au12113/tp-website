@@ -19,9 +19,9 @@ const ProductSlider = ({ slides }) => {
     const absX = Math.abs(changed)
     if (absX > minTouchDistance) {
       if (changed > 0) {
-        nextSlide()
-      } else {
         prevSlide()
+      } else {
+        nextSlide()
       }
     }
   }
@@ -35,9 +35,9 @@ const ProductSlider = ({ slides }) => {
     const absX = Math.abs(changed)
     if (absX > minDragDistance) {
       if (changed > 0) {
-        nextSlide()
-      } else {
         prevSlide()
+      } else {
+        nextSlide()
       }
     }
   }
