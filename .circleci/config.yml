@@ -49,7 +49,7 @@ jobs:
 
   deploy_frontend:
     docker:
-      - image: circleci/node:14.17.6
+      - image: circleci/node:14.17.6-browsers
     working_directory: ~/project
     steps:
       - checkout
