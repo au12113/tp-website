@@ -14,7 +14,7 @@ const Footer = () => {
                         <img
                             src={logo}
                             className="img-fluid"
-                            alt=""
+                            alt="อีซูซุตังปัก"
                             loading="lazy" />
                         <div className="ml-2 ml-lg-4 footer-address">
                             <span>กลุ่มอีซูซุตังปักอุบล</span><br />

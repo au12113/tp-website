@@ -8,16 +8,6 @@
   object-fit: contain;
 }
 
-.btn.btn-tangpark {
-  background-color: #ed1b24;
-  color:whitesmoke;
-}
-
-.btn.btn-tangpark:hover {
-  background-color: #ed1b24;
-  color: #c8c8c8;
-}
-
 #table-wrapper {
   position: relative;
 }

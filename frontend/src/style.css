@@ -25,6 +25,7 @@ img > .product {
 
 #context {
     min-height: calc(100vh - 258px - 1rem);
+    padding: auto 10px;
 }
 
 h4.text-light {
@@ -54,6 +55,16 @@ div.box {
 
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
+}
+
+.btn.btn-tangpark {
+  background-color: #ed1b24;
+  color:whitesmoke;
+}
+
+.btn.btn-tangpark:hover {
+  background-color: #ed1b24;
+  color: #c8c8c8;
 }
 
 @media only screen and (min-width: 992px) {

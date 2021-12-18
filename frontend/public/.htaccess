@@ -7,3 +7,7 @@
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 </IfModule>
+
+<Files ~ "\.(png|jpe?g|gif)$">
+  Header set X-Robots-Tag "noindex"
+</Files>

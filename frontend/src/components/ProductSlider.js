@@ -54,8 +54,8 @@ const ProductSlider = ({ slides }) => {
     <div className="styled-slider">
       <i className={`bi-chevron-left left arrow ${length === 1 ? 'd-none' : ''}`} onClick={prevSlide} />
       <i className={`bi-chevron-right right arrow ${length === 1 ? 'd-none' : ''}`} onClick={nextSlide} />
-      <div className="slider-page">
-        <span>{current + 1}/{length}</span>
+      <div className="slider-page d-flex justify-content-center">
+        <span className="page-number">{current + 1}/{length}</span>
       </div>
       <div
         className="slide-image-container"
@@ -64,17 +64,7 @@ const ProductSlider = ({ slides }) => {
         onDragStart={_onDragStart}
         onDragEnd={_onDragEnd}
       >
-      {
-        slides.map((slide, index) => {
-          return (
-            <div key={index} >
-              { index === current && (
-                <img src={slide.image} className="slide-image" alt={slide.caption} />
-              )}
-            </div>
-          )
-        })
-      }
+        <img src={slides[current].image} className="slide-image" alt={slides[current].caption} />
       </div>
     </div>
   )

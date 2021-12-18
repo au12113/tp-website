@@ -40,7 +40,7 @@ class Header extends React.Component {
                             src={logo}
                             className={`d-inline-block align-top header-logo ${this.state.miniHeader ? 'mini' : ''}`}
                             style={{ margin: 'auto' }}
-                            alt=""
+                            alt="อีซูซุตังปัก"
                             loading="lazy" />
                         <h4 className="text-light d-none d-lg-block">อีซูซุตังปักอุบลกรุ๊ป</h4>
                     </div>

@@ -35,9 +35,9 @@ class App extends React.Component {
           return (
             <Router>
               <Helmet>
-                <title>{'กลุ่มอีซูซุตังปักอุบล | ISUZU Tangpark Ubon Group'}</title>
+                <title>กลุ่มอีซูซุตังปักอุบล | ISUZU Tangpark Ubon Group</title>
                 <meta itemProp="name" content="กลุ่มอีซูซุตังปักอุบล | ISUZU Tangpark Ubon Group" />
-                <meta itemProp="description" content="ตัวแทนจำหน่ายรถยนต์อีซูซุและศูนย์บริการมาตรฐานอีซูซุ ในเขตจังหวัดอุบลราชธานี, ยโสธร, อำนาจเจริญ และมุกดาหาร " />
+                <meta itemProp="description" content="ตัวแทนจำหน่ายรถกระบะรถบรรทุกอีซูซุและศูนย์บริการมาตรฐานอีซูซุ ในเขตจังหวัดอุบลราชธานี ยโสธร อำนาจเจริญ มุกดาหาร" />
                 <meta itemProp="image" content="https://www.isuzu-tpubon.com/favicon-192.png" />
               </Helmet>
               <div id="wrap" className="disable-dbl-tap-zoom">

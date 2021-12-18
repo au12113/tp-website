@@ -28,8 +28,7 @@ class BrieflyProductDetail extends React.Component {
   getProductDetail = async () => {
     const response = await TPBackend.get(`/product/${this.webCategory}`)
     const { list, logo, cover } = getAllFileName('products', this.webCategory)
-    const prodImgs = list.map(filtered => { return { image: this.getPathName(filtered), caption: `${this.webCategory}_${filtered.split('.')[0]}` } })
-    console.log(prodImgs)
+    const prodImgs = list.map(filtered => { return { image: this.getPathName(filtered), caption: `${this.webCategory}_${filtered.split('.')[0]}_isuzu` } })
     this.setState({ product: response.data, imgList: prodImgs, logo: this.getPathName(logo), cover: this.getPathName(cover) })
   }
 
@@ -79,17 +78,18 @@ class BrieflyProductDetail extends React.Component {
         <>
           <Helmet>
             <title>{`Isuzu ${this.webCategory} | ISUZU Tangpark Ubon Group`}</title>
+            <meta itemProp="description" content="ตัวแทนจำหน่ายรถยนต์อีซูซุและศูนย์บริการมาตรฐานอีซูซุ ในเขตจังหวัดอุบลราชธานี ยโสธร อำนาจเจริญ และมุกดาหาร" />
           </Helmet>
           <div className="mt-3 d-flex justify-content-center">
             {/* <h1>{`Isuzu ${this.webCategory}`}</h1> */}
             <img src={this.state.logo} className="product-header" />
           </div>
-          <div className="row d-flex mx-0 justify-content-center">
+          <div className="row d-flex mx-0 py-3 justify-content-center">
             <div className="row col-12 col-lg-6 d-flex justify-content-center">
-              <div className="row col-12 p-0">
+              <div className="row col-12 p-0 justify-content-center">
                 <ProductSlider slides={this.state.imgList} />
               </div>
-              <div className="button-container mt-2 mt-lg-0 col-10 col-lg-8">
+              <div className="button-container my-2 col-10 col-lg-8">
                 <button
                   type="button"
                   className="btn btn-tangpark btn-lg btn-block download-brochure"
@@ -99,7 +99,7 @@ class BrieflyProductDetail extends React.Component {
                 </button>
               </div>
             </div>
-            <div className="row col-12 col-lg-6 mt-3 d-flex justify-content-center">
+            <div className="row col-12 col-lg-6 d-flex justify-content-center">
               {this.renderTable(this.state.product.priceList)}
             </div>
           </div>

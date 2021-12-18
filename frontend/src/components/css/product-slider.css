@@ -1,22 +1,29 @@
 .slider-page {
   display: block;
-  background-color: rgba(30, 30, 30, 0.3);
-  color: whitesmoke;
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 0.5rem rgb(0, 0, 0);
   padding: 5px 20px;
-  width: 10%;
+  max-width: 250px;
   position: absolute;
-  left: 45%;
-  bottom: 68px;
+  bottom: 30px;
+}
+
+.page-number {
+  font-size: 1.2rem;
+  color: whitesmoke;
 }
 
 .slide-image-container {
-  max-width: 80%;
-  min-height: 400px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  object-fit: contain;
 }
 
 .slide-image {
-  max-width: 100%;
-  min-height: 400px;
+  max-width: 80%;
+  min-height: 350px;
+  max-height: 450px;
   object-fit: contain;
 }
 
@@ -24,22 +31,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: auto 5px;
 }
 
 .arrow {
-  color: black;
+  color: whitesmoke;
+  text-shadow: 0px 0px 0.5rem #000000;
   font-size: 3rem;
 }
 
 .left.arrow {
   position: absolute;
-  top: 50%;
   left: 20px;
 }
 
 .right.arrow {
   position: absolute;
-  top: 50%;
   right: 20px;
 }
 
@@ -62,7 +69,8 @@
   }
 
   .arrow {
-    color: black;
+    color: whitesmoke;
+    text-shadow: 0px 0px 0.3rem #000000;
     font-size: 1.5rem;
   }
 

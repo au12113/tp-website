@@ -33,9 +33,9 @@ class HighlightProduct extends React.Component {
     const { webCategory, min } = this.props.data
     return (
       <div className="col-12">
-        <div className={`row d-flex ${this.props.index % 2 === 0 ? 'flex-row' : 'flex-row-reverse reverse'} background-container py-4`}>
+        <div className={`row d-flex ${this.props.index % 2 === 0 ? 'flex-row' : 'flex-row-reverse reverse'} background-container py-1`}>
           <div className="col-12 col-lg-6 highlight-wrapper">
-            <img src={this.state.cover} alt={webCategory} className="product zoom" style={{ height: '18em', width: '100%', objectFit: 'contain' }} />
+            <img src={this.state.cover} alt={`${webCategory} cover อีซูซุตังปัก`} className="product zoom" style={{ height: '18em', width: '100%', objectFit: 'contain' }} />
           </div>
           <div className="col-12 col-lg-6 d-flex h-100 justify-content-center my-auto">
             <div className="align-middle">
@@ -44,7 +44,7 @@ class HighlightProduct extends React.Component {
                   className={`d-flex flex-column ${this.isTooLong(webCategory) ? '' : 'flex-xl-row'} justify-content-center align-items-baseline`}
                   to={`${process.env.PUBLIC_URL + '/product/' + webCategory}`}
                 >
-                  <img src={this.state.logo} alt="series" className="product series-name" />
+                  <img src={this.state.logo} alt={`${webCategory} logo อีซูซุตังปัก`} className="product series-name" />
                   {/* <span className="logo-name mx-auto mx-xl-2">{webCategory.toUpperCase()}</span> */}
                 </Link>
               </div>
@@ -56,9 +56,9 @@ class HighlightProduct extends React.Component {
                       {min.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}.-
                     </span>
                   </p>
-                  <div className="d-flex mt-2 justify-content-center">
+                  <div className="d-flex mt-2 justify-content-center" style={{ fontSize: 'inherit' }}>
                     <Link to={`${process.env.PUBLIC_URL + '/product/' + webCategory}`}>
-                      <button type="button" className="btn btn-dark">รายละเอียด</button>
+                      <button type="button" className="btn btn-tangpark">รายละเอียด</button>
                     </Link>
                   </div>
                 </div>

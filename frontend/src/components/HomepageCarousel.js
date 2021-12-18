@@ -93,33 +93,41 @@ class HomepageCarousel extends React.Component {
   }
 
   render () {
-    return (
-      <div
-        id="myCarousel"
-        className="carousel slide"
-        onDragStart={this._onDragStart}
-        onDragEnd={this._onDragEnd}
-        onTouchStart={this._onTouchStart}
-        onTouchEnd={this._onTouchEnd}
-        data-ride="carousel"
-        style={{ height: 'auto' }}
-      >
-        <ol className="carousel-indicators">
-          {this.carouselIndexRender()}
-        </ol>
-        <div className="carousel-inner">
-          {this.carouselContentRender()}
+    if (this.state.contents.length > 0) {
+      return (
+        <div
+          id="myCarousel"
+          className="carousel slide"
+          onDragStart={this._onDragStart}
+          onDragEnd={this._onDragEnd}
+          onTouchStart={this._onTouchStart}
+          onTouchEnd={this._onTouchEnd}
+          data-ride="carousel"
+          style={{ height: 'auto' }}
+        >
+          <ol className="carousel-indicators">
+            {this.carouselIndexRender()}
+          </ol>
+          <div className="carousel-inner">
+            {this.carouselContentRender()}
+          </div>
+          <div className="carousel-control-prev" onClick={this.prevCarouselPage} role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </div>
+          <div className="carousel-control-next" onClick={this.nextCarouselPage} role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </div>
         </div>
-        <div className="carousel-control-prev" onClick={this.prevCarouselPage} role="button" data-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="sr-only">Previous</span>
-        </div>
-        <div className="carousel-control-next" onClick={this.nextCarouselPage} role="button" data-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="sr-only">Next</span>
-        </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <h1>
+          Loading...
+        </h1>
+      )
+    }
   }
 }
 
