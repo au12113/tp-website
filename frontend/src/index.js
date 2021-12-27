@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,6 +15,8 @@ import BrieflyProductDetail from './pages/brieflyProductDetail/BrieflyProductDet
 import ContactUs from './pages/contactUs/ContactUs'
 
 class App extends React.Component {
+  headerRef = React.createRef()
+
   componentDidMount () {
     window.addEventListener('resize', this.getWindowWidth)
   }
@@ -40,7 +42,7 @@ class App extends React.Component {
                 <meta itemProp="description" content="ตัวแทนจำหน่ายรถกระบะรถบรรทุกอีซูซุและศูนย์บริการมาตรฐานอีซูซุ ในเขตจังหวัดอุบลราชธานี ยโสธร อำนาจเจริญ มุกดาหาร" />
                 <meta itemProp="image" content="https://www.isuzu-tpubon.com/favicon-192.png" />
               </Helmet>
-              <div id="wrap" className="disable-dbl-tap-zoom">
+              <div id="wrap" ref={this.headerRef} className="disable-dbl-tap-zoom">
                 <Header />
                 <div id="context">
                   <Switch>
@@ -56,12 +58,15 @@ class App extends React.Component {
                     <Route path="/contact">
                       <ContactUs />
                     </Route>
-                    <Route path="/">
+                    <Route path="/home">
                       <Homepage />
                     </Route>
+                    <Route exact path='/' render={() => (
+                      <Redirect to='/home' />
+                    )} />
                   </Switch>
                 </div>
-                <Footer />
+                <Footer refProps={this.headerRef} />
               </div>
             </Router>
           )

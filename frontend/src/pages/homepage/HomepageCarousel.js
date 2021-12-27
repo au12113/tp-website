@@ -1,8 +1,8 @@
 import React from 'react'
 
-import TPBackend from '../apis/tpBackend'
-import './css/homepage-carousel.css'
-import './css/animation.css'
+import TPBackend from '../../apis/tpBackend'
+import './homepage-carousel.css'
+import '../../components/css/animation.css'
 
 class HomepageCarousel extends React.Component {
   state = { carouselPage: 0, contents: [] }

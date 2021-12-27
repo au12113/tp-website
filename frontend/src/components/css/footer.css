@@ -1,11 +1,44 @@
-.social-media-logo {
-    height: 40px;
-    width: 40px;
+.footer-content {
+    height: 345px;
+    background-color: #dadada;
+    padding: 25px 20px 20px 100px;
 }
 
-.footer-address>span, .white-link>a {
-    color: whitesmoke;
-    font-size: 1rem;
+.footer-logo {
+    max-width: 780px;
+}
+
+.social-link-container {
+    padding: 10px 0px 0px 0px !important
+}
+
+.social-media-logo {
+    height: 50px;
+    width: 50px;
+}
+
+.footer-address>span, .white-link {
+    color: #575757;
+    font-size: 1.25rem;
+}
+
+.footer-copyright {
+    margin-top: 25px;
+    padding: 20px 0px;
+    border-bottom: 2px solid #aaaaaa;
+}
+
+.footer-copyright>span, #footer>.back-to-top>span {
+    color: #575757;
+    font-size: 1.25rem;
+}
+
+.back-to-top {
+    padding: 25px 0px 40px 0px;
+}
+
+.back-to-top-icon {
+    height: 50px;
 }
 
 @media only screen and (max-width: 991px) {

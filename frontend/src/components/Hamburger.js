@@ -18,11 +18,12 @@ class Hamburger extends React.Component {
 
     render () {
       return (
-            <div className="hamburger d-lg-none" onClick={this.onClick}>
-                <div className={`line line-top ${this.state.open ? 'open' : ''}`}></div>
-                <div className={`line line-middle ${this.state.open ? 'open' : ''}`}></div>
-                <div className={`line line-bottom ${this.state.open ? 'open' : ''}`}></div>
-            </div>
+        <div className="hamburger d-lg-none" onClick={this.onClick}>
+            <div className={`line line-top ${this.state.open ? 'open' : ''}`}></div>
+            <div className={`line line-middle ${this.state.open ? 'open' : ''}`}></div>
+            <div className={`line line-bottom ${this.state.open ? 'open' : ''}`}></div>
+            <span>เมนู</span>
+        </div>
       )
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { HomepageCarousel } from '../../components'
+import HomepageCarousel from './HomepageCarousel'
 import OurService from './OurService'
 import HighlightProductList from './HighLightProductList'
 import TPBackend from '../../apis/tpBackend'

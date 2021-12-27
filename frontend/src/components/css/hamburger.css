@@ -1,8 +1,8 @@
 .hamburger {
     z-index: 1010;
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 5px;
+    top: 3px;
     height: 45px;
     width: 45px;
     display: flex;
@@ -13,10 +13,14 @@
 }
 
 .line {
-    height: 3px;
-    width: 30px;
-    background-color: white;
+    height: 2px;
+    width: 25px;
+    background-color: #2C2C2C;
     transition: all 0.2s ease;
+}
+
+.line.open {
+    background-color: whitesmoke;
 }
 
 .line-top {
@@ -26,7 +30,7 @@
 }
 
 .line-top.open {
-    transform: translate(3px, -5px)  rotate(45deg);
+    transform: translate(3px, 4px)  rotate(45deg);
 }
 
 .line-middle {
@@ -46,5 +50,5 @@
 }
 
 .line-bottom.open {
-    transform: translateX(1px) rotate(-45deg);
+    transform: translate(1px, 8px) rotate(-45deg);
 }

@@ -1,6 +1,5 @@
 export { default as Animation } from './Animation'
 export { default as Card } from './Card'
-export { default as HomepageCarousel } from './HomepageCarousel'
 export { default as CollapseTable } from './CollapseTable'
 export { default as Footer } from './Footer'
 export { default as Header } from './Header'
