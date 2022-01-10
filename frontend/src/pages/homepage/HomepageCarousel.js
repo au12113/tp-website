@@ -84,7 +84,12 @@ class HomepageCarousel extends React.Component {
             <picture>
               <source media="(max-width: 991px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileNameMobile}`} />
               <source media="(min-width: 992px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} />
-              <img src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} className="d-block product" style={{ width: '100%', objectFit: 'fill' }} alt={item.fileName} />
+              <img
+                src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`}
+                className="d-block product"
+                style={{ width: '100%', objectFit: 'fill' }}
+                alt={item.fileName}
+              />
             </picture>
           </div>
         </div>

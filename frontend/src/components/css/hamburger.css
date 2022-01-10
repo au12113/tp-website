@@ -1,10 +1,10 @@
 .hamburger {
     z-index: 1010;
     position: absolute;
-    right: 5px;
-    top: 3px;
-    height: 45px;
-    width: 45px;
+    right: 8px;
+    top: 4px;
+    height: 40px;
+    width: 40px;
     display: flex;
     justify-content: center;
     flex-direction: column;

@@ -10,7 +10,6 @@ import './font.css'
 import { Header, Footer } from './components/'
 import CacheBuster from './helpers/cacheBuster'
 import Homepage from './pages/homepage/Homepage'
-import ProductGallery from './pages/productGallery/ProductGallery'
 import BrieflyProductDetail from './pages/brieflyProductDetail/BrieflyProductDetail'
 import ContactUs from './pages/contactUs/ContactUs'
 
@@ -46,9 +45,6 @@ class App extends React.Component {
                 <Header />
                 <div id="context">
                   <Switch>
-                    <Route path="/products">
-                      <ProductGallery />
-                    </Route>
                     <Route path="/product/:productId">
                       <BrieflyProductDetail />
                     </Route>

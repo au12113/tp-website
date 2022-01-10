@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const _ = require('lodash')
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -44,14 +43,40 @@ app.get('/banner', async(req, res) => {
 })
 
 app.get('/contactus', async (req, res) => {
-    let result = await Database.query('SELECT * FROM v_branch_order_province')
-    let grouped_branch = _.groupBy(result, 'province')
+    const result = await Database.query('SELECT * FROM v_branch_order_province')
+    const grouped_branch = result.reduce((acc, val) => {
+        if(!acc[val.province]) {
+            acc[val.province] = []
+        }
+        acc[val.province].push(val)
+        return acc
+    }, {})
     return res.jsonp(grouped_branch)
 })
 
 app.get('/products', async (req, res) => {
-    let result = await Database.query('SELECT * FROM v_homepage_products')
+    const result = await Database.query('SELECT * FROM v_homepage_products')
     return res.jsonp(result)
+})
+
+app.get('/productType', async (req, res) => {
+    const typeList = [
+        { id: 'Pick-up', text: 'รถกระบะ', modelList: [] },
+        { id: 'PPV', text: 'รถอเนกประสงค์', modelList: [] },
+        { id: 'Truck', text: 'รถบรรทุก', modelList: [] }
+    ]
+    const result = await Database.query('SELECT * FROM v_homepage_product_type')
+    const productTypes = result.reduce((acc, val) => {
+        let found = false
+        acc.forEach((x, index) => {
+            if(!found && x.id == val.category) {
+                acc[index].modelList.push(val)
+                found = true
+            }
+        })
+        return acc
+    }, typeList)
+    return res.jsonp(productTypes)
 })
 
 app.get('/product/:web_category', async (req, res) => {

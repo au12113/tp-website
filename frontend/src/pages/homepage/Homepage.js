@@ -1,7 +1,7 @@
 import React from 'react'
 
 import HomepageCarousel from './HomepageCarousel'
-import OurService from './OurService'
+import ProductType from './ProductType'
 import HighlightProductList from './HighLightProductList'
 import TPBackend from '../../apis/tpBackend'
 
@@ -17,26 +17,11 @@ class Homepage extends React.Component {
     this.setState({ products: response.data })
   }
 
-  renderProductList () {
-    if (this.state.products.length > 0) {
-      return (
-        <HighlightProductList
-          list={this.state.products}
-        />
-      )
-    } else {
-      return (
-        'Loading'
-      )
-    }
-  }
-
   render () {
     return (
       <div>
         <HomepageCarousel />
-        <OurService />
-        {this.renderProductList()}
+        <ProductType />
       </div>
     )
   }

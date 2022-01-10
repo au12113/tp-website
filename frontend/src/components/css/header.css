@@ -33,13 +33,26 @@ li.active {
     background: transparent;
 }
 
-.header-logo {
+.header-logo-container {
+    margin-left: -30px;
+    padding-left: 50px;
     height: 60px;
+    width: 520px;
+    transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -moz-transform: skew(-30deg);
+    -o-transform: skew(-30deg);
+    background-color: #6f6f6f;
 }
 
-.header-logo.mini {
-    height: 45px;
+.header-logo {
+    height: 35px;
+    transform: skew(30deg);
+    -webkit-transform: skew(30deg);
+    -moz-transform: skew(30deg);
+    -o-transform: skew(30deg);
 }
+
 .navLink-container {
     width: 150px;
     height: 60px;
@@ -54,15 +67,26 @@ li.active {
 @media only screen and (max-width: 991px) {
     .header-container {
         height: 44px;
-        border-bottom: 2px solid #ed1b24;
     }
 
+    .header-logo-container {
+        margin-left: -20px;
+        padding-left: 28px;
+        height: 42px;
+        width: 320px;
+        transform: skew(-30deg);
+        -webkit-transform: skew(-30deg);
+        -moz-transform: skew(-30deg);
+        -o-transform: skew(-30deg);
+        background-color: #6f6f6f;
+    }
+    
     .header-logo {
-        height: 43px;
-    }
-
-    .header-logo.mini {
-        height: 43px;
+        height: 22px;
+        transform: skew(30deg);
+        -webkit-transform: skew(30deg);
+        -moz-transform: skew(30deg);
+        -o-transform: skew(30deg);
     }
 }
 

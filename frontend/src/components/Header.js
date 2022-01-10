@@ -8,42 +8,25 @@ import MobileSidebar from './MobileSidebar'
 import './css/header.css'
 
 class Header extends React.Component {
-  state = { miniHeader: false, showMenu: false }
-
-  componentDidMount () {
-    window.addEventListener('scroll', this.handleScroll, { passive: true })
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('scroll', this.handleScroll)
-  }
+  state = { showMenu: false }
 
   onClickHamburger = () => {
     this.setState({ showMenu: !this.state.showMenu })
   }
 
-  handleScroll = (event) => {
-    if (window.scrollY > (this.state.miniHeader ? 435 : 480) && !this.state.miniHeader) {
-      this.setState({ miniHeader: true })
-    }
-    if (window.scrollY <= (this.state.miniHeader ? 435 : 480) && this.state.miniHeader) {
-      this.setState({ miniHeader: false })
-    }
-  }
-
   render () {
     return (
-      <nav className={`header-container d-flex sticky-top ${this.state.miniHeader ? 'mini-nav' : ''}`}>
-        <NavLink to="/#">
-          <div className="flex-grow-1">
+      <nav className='header-container sticky-top overflow-hidden d-flex flex-row'>
+        <div className="header-logo-container d-flex align-items-center">
+          <NavLink to="/#">
             <img
               src={logo}
-              className={`d-inline-block header-logo ${this.state.miniHeader ? 'mini' : ''}`}
+              className='d-inline-block header-logo'
               alt="อีซูซุตังปัก"
               loading="lazy"
             />
-          </div>
-        </NavLink>
+          </NavLink>
+        </div>
         <div className="d-none d-lg-flex flex-grow-1 justify-content-lg-end">
           <ul className="navbar-nav flex-row">
             <li className="nav-item">
