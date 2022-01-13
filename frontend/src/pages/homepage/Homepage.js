@@ -2,7 +2,6 @@ import React from 'react'
 
 import HomepageCarousel from './HomepageCarousel'
 import ProductType from './ProductType'
-import HighlightProductList from './HighLightProductList'
 import TPBackend from '../../apis/tpBackend'
 
 class Homepage extends React.Component {
