@@ -42,6 +42,20 @@ app.get('/banner', async(req, res) => {
     return res.jsonp(result)
 })
 
+app.get('/banner/:category', async(req, res) => {
+    let result = await Database.query(
+        `SELECT fileName, fileNameMobile, url FROM banner \
+        WHERE category like '${req.params.category}' \
+        AND ( isPromotion is false \
+        OR ( \
+            isPromotion is true \
+            AND CURRENT_DATE() < expiredDate \
+        )) \
+        ORDER BY id DESC \
+        LIMIT 10`)
+    return res.jsonp(result)
+})
+
 app.get('/contactus', async (req, res) => {
     const result = await Database.query('SELECT * FROM v_branch_order_province')
     const grouped_branch = result.reduce((acc, val) => {
