@@ -10,11 +10,13 @@ class MobileSidebar extends React.Component {
 
   render () {
     return (
-      <div className="mobile-sidebar d-lg-none">
+      <div id='mobile-sidebar' className="d-lg-none">
+        <div className='d-flex flex-column'>
           <NavLink to="/#" onClick={this.onClickNav}>หน้าแรก</NavLink>
           {/* <NavLink to="/products" onClick={this.onClickNav}>รุ่นรถ</NavLink>
           <NavLink to="/blog" onClick={this.onClickNav}>บทความ</NavLink> */}
           <NavLink to="/contact" onClick={this.onClickNav}>ติดต่อ</NavLink>
+        </div>
       </div>
     )
   }

@@ -1,19 +1,12 @@
-.mobile-sidebar {
-    position: absolute;
-    z-index: 1008;
+#mobile-sidebar {
+    position: fixed;
+    z-index: 999;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,.85);
     top:0;
     left:0;
-    transform: transformX(100vw);
-    display: flex;
-    flex-direction: column;
     padding: 50px 0px 0px 40px;
-}
-
-.mobile-sidebar.open {
-    transform: none;
 }
 
 .mobile-sidebar>* {

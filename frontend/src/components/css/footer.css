@@ -1,10 +1,11 @@
 .footer-content {
     background-color: #dadada;
+    margin-top: 20px;
     padding: 25px 20px 20px 100px;
 }
 
 .footer-logo {
-    width: 100%;
+    max-width: 800px;
     object-fit: contain;
 }
 

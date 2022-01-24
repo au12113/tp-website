@@ -16,7 +16,7 @@ class HomepageCarousel extends React.Component {
   }
 
   getBannerList = async () => {
-    const response = await TPBackend.get('/banner')
+    const response = await TPBackend.get('/banner/main')
     this.setState({ contents: response.data })
   }
 
@@ -102,7 +102,7 @@ class HomepageCarousel extends React.Component {
       return (
         <div
           id="myCarousel"
-          className="carousel slide"
+          className="carousel banner-carousel slide"
           onDragStart={this._onDragStart}
           onDragEnd={this._onDragEnd}
           onTouchStart={this._onTouchStart}

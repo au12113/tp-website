@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   render () {
     return (
-      <nav className='header-container sticky-top overflow-hidden d-flex flex-row'>
+      <nav className={`header-container ${this.state.showMenu ? '' : 'sticky-top'} overflow-hidden d-flex flex-row`}>
         <div className="header-logo-container d-flex align-items-center">
           <NavLink to="/#">
             <img
