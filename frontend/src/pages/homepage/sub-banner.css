@@ -1,0 +1,33 @@
+.sub-banner-container {
+  padding-top: 25px;
+  overflow-x: hidden;
+}
+
+.sub-banner-title {
+  position: relative;
+}
+
+.see-all-button {
+  position: relative;
+  margin: auto 0px;
+}
+
+@media only screen and (min-width: 992px) {
+  .sub-banner-title {
+    width: 50%;
+    left: 25%;
+  }
+  
+  .see-all-button {
+    height: 40px;
+    width: 180px;
+    left: 30%;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .sub-banner-title {
+    width: 140%;
+    left: -20%;
+  }
+}

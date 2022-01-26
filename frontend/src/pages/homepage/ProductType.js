@@ -3,7 +3,7 @@ import React from 'react'
 import tpBackend from '../../apis/tpBackend'
 import { getAllFileName } from '../../helpers/getFilesNameInDir'
 import { isDesktop } from '../../helpers/detectDevice'
-import { DownloadBrochure, GetChat, ProductDetail } from '../../assets/button'
+import { DownloadBrochure, GetChat } from '../../assets/button'
 import './product-type.css'
 
 class ProductType extends React.Component {
@@ -11,7 +11,7 @@ class ProductType extends React.Component {
 
   async componentDidMount () {
     const res = await tpBackend.get('/productType')
-    const list = getAllFileName('highlight', 'all')
+    const list = await getAllFileName('highlight', 'all')
     this.setState({ productTypes: res.data, imgList: list })
   }
 
@@ -185,7 +185,7 @@ class ProductType extends React.Component {
             </div>
           </div>
           <div className='wrapped-product-button d-flex flex-row-reverse overlap'>
-            <div
+            {/* <div
               className='product-button-container'
               onClick={() => { window.open(process.env.PUBLIC_URL + '/pdf/' + selectModel.brochureUrl, '_blank') }}
             >
@@ -193,7 +193,7 @@ class ProductType extends React.Component {
                 className='product-button'
                 src={ProductDetail}
               />
-            </div>
+            </div> */}
             <div
               className='product-button-container'
               onClick={() => { window.open(process.env.PUBLIC_URL + '/pdf/' + selectModel.brochureUrl, '_blank') }}

@@ -2,6 +2,10 @@ import React from 'react'
 
 import HomepageCarousel from './HomepageCarousel'
 import ProductType from './ProductType'
+import SalesBanner from './SalesBanner'
+import ServiceBanner from './ServiceBanner'
+import ExpSharing from './ExpSharing'
+
 import TPBackend from '../../apis/tpBackend'
 
 class Homepage extends React.Component {
@@ -21,6 +25,9 @@ class Homepage extends React.Component {
       <div>
         <HomepageCarousel />
         <ProductType />
+        <SalesBanner />
+        <ServiceBanner />
+        <ExpSharing />
       </div>
     )
   }

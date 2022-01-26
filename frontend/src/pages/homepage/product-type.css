@@ -129,6 +129,7 @@
   
   .scrollbar:hover::-webkit-scrollbar {
     display: block;
+    position: absolute;;    
     height: 10px;
   }
 
@@ -148,28 +149,38 @@
 
   .model-carousel {
     width: 85%;
-    height: 140px;
+    height: 200px;
+    /* height: 140px; */
     overflow-x: hidden;
-    margin: 30px auto 0px auto;
+    /* margin: 30px auto 0px auto; */
+    margin: 0px auto 10px auto;
   }
 
   .scrollbar:hover {
-    height: 130px;
+    /* height: 130px; */
+    height: 210px;
     overflow-x: auto;
-    margin: 30px auto 10px auto;
+    /* margin: 30px auto 10px auto; */
+    margin: 0px auto 0px auto;
   }
 
   .model-container {
     width: 240px;
-    margin: 0px 15px;
+    margin: auto 15px;
+    /* margin: 0px 15px; */
   }
+  
+  .model-container:hover {
+    cursor: pointer;
+  }
+
 
   .model-cover {
     width: 240px;
     filter: saturate(50%) contrast(40%) brightness(70%);
     height: auto;
   }
-  
+
   .model-cover.active {
     filter: none;
   }
