@@ -23,6 +23,7 @@ class Hamburger extends React.Component {
             <div className={`line line-middle ${this.state.open ? 'open' : ''}`}></div>
             <div className={`line line-bottom ${this.state.open ? 'open' : ''}`}></div>
             <span>เมนู</span>
+            <span className={`close-menu${this.state.open ? '' : ' d-none'}`}>ปิดเมนู</span>
         </div>
       )
     }

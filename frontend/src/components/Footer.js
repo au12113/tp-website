@@ -41,7 +41,7 @@ const Footer = ({ refProps }) => {
           </a>
           <a className='d-flex flex-row mx-0 my-2' href="https://www.youtube.com/channel/UCQbg7lO-vS9ZZadTuIr5K7g" target="_blank" rel="noopener noreferrer">
             <img className="social-media-logo" src={youtube} />
-            <span className="pl-4 my-auto white-link">รถบรรทุกกลุ่มอีซูซุตังปักอุบล</span>
+            <span className="pl-4 my-auto white-link">กลุ่มอีซูซุตังปักอุบล</span>
           </a>
         </div>
       </div>

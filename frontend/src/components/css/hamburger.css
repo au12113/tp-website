@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.close-menu {
+    color: whitesmoke;
+    margin-top: 10px;
+}
+
 .line {
     height: 2px;
     width: 25px;
@@ -20,6 +25,7 @@
 }
 
 .line.open {
+    position: fixed;
     background-color: whitesmoke;
 }
 
@@ -31,6 +37,7 @@
 
 .line-top.open {
     transform: translate(3px, 4px)  rotate(45deg);
+    margin-bottom: 35px;
 }
 
 .line-middle {
@@ -51,4 +58,5 @@
 
 .line-bottom.open {
     transform: translate(1px, 8px) rotate(-45deg);
+    margin-bottom: 14px;
 }

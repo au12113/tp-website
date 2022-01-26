@@ -23,7 +23,8 @@ class BranchCard extends React.Component {
         </div>
         <div className="branch-body">
           <p>{branch.address} {branch.subdistrict} {branch.district} จังหวัด{branch.province} {branch.postcode}</p>
-          {branch.tel !== undefined ? <p>โทร: {this.arrayRender(branch.tel)}</p> : ''}
+          {branch.tel !== null && branch.service_tel !== null ? <><p>ติดต่อฝ่ายขาย: {this.arrayRender(branch.tel)}</p><p>ติดต่อศูนย์บริการ: {this.arrayRender(branch.service_tel)}</p></> : ''}
+          {branch.tel !== null && branch.service_tel == null ? <p>ติดต่อ: {this.arrayRender(branch.tel)}</p> : ''}
         </div>
         <div className="branch-map-container">
           <a href={branch.url} className="d-lg-none">

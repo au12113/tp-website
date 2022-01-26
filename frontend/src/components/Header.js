@@ -55,8 +55,8 @@ class Header extends React.Component {
             </li>
           </ul>
         </div>
-        <Hamburger onClick={this.onClickHamburger} open={this.state.showMenu} />
         {this.state.showMenu ? <MobileSidebar onClick={this.onClickHamburger} /> : ''}
+        <Hamburger onClick={this.onClickHamburger} open={this.state.showMenu} />
       </nav>
     )
   }
