@@ -11,7 +11,7 @@ class ContactUs extends React.Component {
 
   getAllBranch = async () => {
     const response = await TPBackend.get('/contactus')
-    console.log(response.data)
+    // console.log(response.data)
     this.setState({ branchList: response.data })
   }
 
