@@ -331,8 +331,3 @@ workflows:
               only: main-docker
       - deploy_gcp_backend:
           requires: [build_gcp_backend_image]
-      - deploy_frontend:
-          requires: [deploy_app_engine_backend]
-          filters:
-            branches:
-              only: main

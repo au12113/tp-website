@@ -26,7 +26,7 @@
     "generate-build-version": "node generate-build-version",
     "prebuild": "npm run generate-build-version",
     "postbuild": "react-snap",
-    "build": "react-scripts build",
+    "build": "env-cmd -f ./.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix ./src/**/*.js"
@@ -66,6 +66,15 @@
       "collapseWhitespace": false,
       "removeComments": false
     },
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-gpu"
+    ],
+    "puppeteer": {
+      "waitUtil": "networkidle0"
+    },
     "inlineCss": true
-  }
+  },
+  "proxy": "https://tangpark.et.r.appspot.com"
 }

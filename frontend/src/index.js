@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -54,12 +54,9 @@ class App extends React.Component {
                     <Route path="/contact">
                       <ContactUs />
                     </Route>
-                    <Route path="/home">
+                    <Route path="/">
                       <Homepage />
                     </Route>
-                    <Route exact path='/' render={() => (
-                      <Redirect to='/home' />
-                    )} />
                   </Switch>
                 </div>
                 <Footer refProps={this.headerRef} />
@@ -72,7 +69,11 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.querySelector('#root')
-)
+console.log = function () {}
+
+const rootElement = document.getElementById('root')
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(<App />, rootElement)
+} else {
+  ReactDOM.render(<App />, rootElement)
+}

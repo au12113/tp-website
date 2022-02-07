@@ -18,7 +18,7 @@ class Header extends React.Component {
     return (
       <nav className={`header-container ${this.state.showMenu ? '' : 'sticky-top'} overflow-hidden d-flex flex-row`}>
         <div className="header-logo-container d-flex align-items-center">
-          <NavLink to="/#">
+          <NavLink to="/">
             <img
               src={logo}
               className='d-inline-block header-logo'
@@ -30,7 +30,7 @@ class Header extends React.Component {
         <div className="d-none d-lg-flex flex-grow-1 justify-content-lg-end">
           <ul className="navbar-nav flex-row">
             <li className="nav-item">
-              <NavLink className="nav-NavLink" activeClassName="active" to="/home">
+              <NavLink className="nav-NavLink" activeClassName="active" to="/">
                 <div className="navLink-container d-flex justify-content-lg-center align-items-lg-center">
                   <h5 className="menu-text">หน้าแรก</h5>
                 </div>
