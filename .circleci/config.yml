@@ -66,7 +66,7 @@ jobs:
           command: |
             cd ~/project/frontend
             cat .env
-            npm run build
+            npm run build || true
             ncftpput -R -v -u $FTP_USER -p $FTP_PASSWORD $FTP_URL domains/isuzu-tpubon.com/public_html build/*
 
   build_gcp_backend_image:
@@ -331,3 +331,8 @@ workflows:
               only: main-docker
       - deploy_gcp_backend:
           requires: [build_gcp_backend_image]
+      - deploy_frontend:
+          requires: [deploy_app_engine_backend]
+          filters:
+            branches:
+              only: main

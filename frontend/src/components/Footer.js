@@ -3,14 +3,14 @@ import React from 'react'
 import { logo, facebook, line, youtube, backToTop } from '../assets/img'
 import './css/footer.css'
 
-const Footer = ({ refProps }) => {
+const Footer = () => {
   const scrollFn = () => {
-    refProps.current.scrollIntoView()
+    window.scrollTo({ top: 0 })
   }
 
   return (
     <div id="footer" className="container-fluid">
-      <div className="footer-content row d-flex">
+      <div className='footer-content row d-flex'>
         <div className="col-12 col-lg-8 px-0">
           <div className="row px-0 mx-0 align-items-center">
             <img
