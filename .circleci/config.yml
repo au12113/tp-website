@@ -306,7 +306,7 @@ jobs:
           command: |
             cd ~/project/frontend
             echo PORT=8080 > .env
-            echo REACT_APP_BACKEND_API=https://$(gcloud app describe --format="value(defaultHostname)") >> .env
+            echo REACT_APP_BACKEND_API=https://$(gcloud app describe --format="value(defaultHostname)")/v1 >> .env
             cat .env
       - persist_to_workspace:
           root: ~/
