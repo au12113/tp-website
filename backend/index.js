@@ -6,9 +6,9 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 
-const urlencodeParser = bodyParser.urlencoded({ extended: false })
+// const urlencodeParser = bodyParser.urlencoded({ extended: false })
 
-const { verifyToken } = require('./helpers/auth')
+// const { verifyToken } = require('./helpers/auth')
 
 const productRoute = require('./endpoints/products/productRoute')
 
