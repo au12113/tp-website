@@ -64,11 +64,22 @@ const PromotionBanner = ({ bannerList, isDesktop, category }) => {
     const startItem = current * itemPerPage
     const endItem = (startItem + itemPerPage - 1) % itemPerPage !== 0 ? startItem + itemPerPage - 1 : startItem
     return bannerList.slice(startItem, endItem + 1).map((banner, i) => {
-      return (
-        <div className='carousel-slide' key={i}>
-          <img src={getFilePath(banner)} />
-        </div>
-      )
+      const url = banner.url ?? null
+      if (url !== null) {
+        return (
+          <div className='carousel-slide' key={i}>
+            <a href={url}>
+              <img src={getFilePath(banner)} />
+            </a>
+          </div>
+        )
+      } else {
+        return (
+          <div className='carousel-slide' key={i}>
+            <img src={getFilePath(banner)} />
+          </div>
+        )
+      }
     })
   }
 
