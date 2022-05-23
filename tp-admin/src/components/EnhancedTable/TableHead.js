@@ -4,10 +4,12 @@ import PropTypes from 'prop-types'
 import { Box, Checkbox, TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material'
 import { visuallyHidden } from '@mui/utils'
 
+import './enhanced-table.css'
+
 /* EnhancedTable used for sortable data. So required variables for checkbox things will nested in 'selectOptions */
 const EnhancedTableHead = ({ headCells, order, orderBy, onRequestSort, selectOptions }) => {
   const createSortHandler = (property) => (event) => {
-    if(order === 'asc') {
+    if (order === 'asc') {
       onRequestSort(event, { property, order: 'desc' })
     } else {
       onRequestSort(event, { property, order: 'asc' })
@@ -27,22 +29,25 @@ const EnhancedTableHead = ({ headCells, order, orderBy, onRequestSort, selectOpt
             />
           </TableCell>)
           : null}
-        {headCells.map((headCell) => (
-            <TableCell key={headCell.id}>
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : 'asc'}
-                onClick={createSortHandler(headCell.id)}
-              >
-                {headCell.label}
-                {orderBy === headCell.id ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                  </Box>)
-                  : null}
-              </TableSortLabel>
-            </TableCell>
-          ))}
+        {headCells.map((headCell, index) => {
+          return <TableCell key={headCell.id} align='center' className={index !== 0 ? 'table-column' : 'first-column'}>
+            <TableSortLabel
+              active={orderBy === headCell.id}
+              direction={orderBy === headCell.id ? order : 'asc'}
+              onClick={createSortHandler(headCell.id)}
+            >
+              {headCell.label}
+              {orderBy === headCell.id ? (
+                <Box component="span" sx={visuallyHidden}>
+                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                </Box>)
+                : null}
+            </TableSortLabel>
+          </TableCell>
+        })}
+        <TableCell key='actions' align='center'>
+          Actions
+        </TableCell>
       </TableRow>
     </TableHead>
   )

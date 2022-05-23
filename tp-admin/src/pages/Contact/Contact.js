@@ -9,32 +9,32 @@ import { useNavigate } from 'react-router-dom'
 
 const headCells = [{
   id: 'id',
-  numeric: false,
   disablePadding: false,
+  type: 'text',
   label: 'รหัสสาขา',
 },
 {
   id: 'name',
-  numeric: false,
   disablePadding: false,
+  type: 'text',
   label: 'ชื่อสาขา',
 },
 {
   id: 'province',
-  numeric: false,
   disablePadding: false,
+  type: 'text',
   label: 'จังหวัด',
 },
 {
   id: 'tel',
-  numeric: false,
   disablePadding: false,
+  type: 'text',
   label: 'เบอร์ฝ่ายขาย',
 },
 {
   id: 'service_tel',
-  numeric: false,
   disablePadding: false,
+  type: 'text',
   label: 'เบอร์ศูนย์บริการ',
 }]
 

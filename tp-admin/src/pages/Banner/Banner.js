@@ -8,35 +8,30 @@ import tpBackend from '../../apis/tpBackend'
 import EnhancedTable from '../../components/EnhancedTable'
 import { useNavigate } from 'react-router-dom'
 
-const headCells = [{
+const headCells = [
+{
+  id: 'fileName',
+  disablePadding: false,
+  type: 'img',
+  label: 'ชื่อไฟล์',
+},
+{
   id: 'category',
-  numeric: false,
   disablePadding: true,
+  type: 'text',
   label: 'ประเภท',
 },
 {
-  id: 'fileName',
-  numeric: false,
-  disablePadding: false,
-  label: 'ชื่อไฟล์',
+  id: 'expiredDate',
+  disablePadding: true,
+  type: 'date',
+  label: 'แสดงถึงวัน',
 },
-// {
-//   id: 'fileNameMobile',
-//   numeric: false,
-//   disablePadding: false,
-//   label: 'ชื่อไฟล์สำหรับมือถือ',
-// },
 {
   id: 'url',
-  numeric: false,
   disablePadding: false,
-  label: 'Url',
-},
-{
-  id: 'expiredDate',
-  numeric: true,
-  disablePadding: true,
-  label: 'แสดงถึงวัน',
+  type: 'url',
+  label: 'ลิงค์ที่แนบในรูป',
 }]
 
 
