@@ -2,28 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
-// import CacheBuster from './helpers/cacheBuster'
+import CacheBuster from './helpers/cacheBuster'
 // import reportWebVitals from './reportWebVitals'
 
 const rootElement = document.getElementById('root')
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate((
-    // <CacheBuster>
-    //   {({ loading, isLatestVersion, refreshCacheAndReload }) => {
-    //     if (loading) return null
-    //     if (!loading && !isLatestVersion) {
-    //       refreshCacheAndReload()
-    //     }
-    //     return (
-    <App />
-    //     )
-    //   }}
-    // </CacheBuster>
-  ), rootElement)
-} else {
-  ReactDOM.render(<App />, rootElement)
-}
-
+ReactDOM.render((
+  <CacheBuster>
+    {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+      if (loading) return null
+      if (!loading && !isLatestVersion) {
+        refreshCacheAndReload()
+      }
+      return (
+        <App />
+      )
+    }}
+  </CacheBuster>
+), rootElement)
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

@@ -8,7 +8,6 @@ import './font.css'
 
 import { Header, Footer } from './components/'
 import Homepage from './pages/homepage/Homepage'
-import BrieflyProductDetail from './pages/brieflyProductDetail/BrieflyProductDetail'
 import ContactUs from './pages/contactUs/ContactUs'
 
 class App extends React.Component {
@@ -25,9 +24,6 @@ class App extends React.Component {
           <Header />
           <div id="context">
             <Switch>
-              <Route path="/product/:productId">
-                <BrieflyProductDetail />
-              </Route>
               <Route path="/blog">
                 Blog
               </Route>
