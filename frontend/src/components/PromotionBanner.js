@@ -9,7 +9,7 @@ const PromotionBanner = ({ bannerList, isDesktop, category }) => {
   const itemPerPage = 4
   const minTouchDistance = 50
   const minDragDistance = 60
-  const lastPage = isDesktop ? Math.floor(bannerList.length / itemPerPage) - 1 : bannerList.length - 1
+  const lastPage = isDesktop ? Math.floor(bannerList.length / itemPerPage) : bannerList.length - 1
 
   let _swipe = { x: null }
 
