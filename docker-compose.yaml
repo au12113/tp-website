@@ -1,0 +1,34 @@
+version: "3.3"
+
+services:
+  backend:
+    image: tp-backend:${BACKEND_VERSION}
+    environment:
+      - DB_URI
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - ~/website:/usr/tp-backend/shared:rw
+    mem_limit: 150m
+    networks:
+      - default
+
+  frontend:
+    image: tp-frontend:${FRONTEND_VERSION}
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ~/website:/usr/tp-frontend/shared:ro
+    mem_limit: 350m
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
