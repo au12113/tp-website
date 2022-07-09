@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 global.__basedir = __dirname
-global.__sharedir = path.join(require('os').homedir(), '/website/assets/')
+global.__sharedir = path.join(require('os').homedir(), '/shared/assets/')
 // const urlencodeParser = bodyParser.urlencoded({ extended: false })
 
 // const { verifyToken } = require('./helpers/auth')

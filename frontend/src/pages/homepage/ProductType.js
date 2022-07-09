@@ -194,6 +194,7 @@ class ProductType extends React.Component {
                 src={ProductDetail}
               />
             </div> */}
+            <a href={process.env.PUBLIC_URL + '/pdf/' + selectModel.brochureUrl} target='_blank' rel="noopener noreferrer">
             <div
               className='product-button-container'
               onClick={() => { window.open(process.env.PUBLIC_URL + '/pdf/' + selectModel.brochureUrl, '_blank') }}
@@ -203,15 +204,17 @@ class ProductType extends React.Component {
                 src={DownloadBrochure}
               />
             </div>
+            </a>
+            <a href={'https://www.facebook.com/isuzutp'} target='_blank' rel="noopener noreferrer">
             <div
               className='product-button-container d-none d-lg-block'
-              onClick={() => { window.open('https://www.facebook.com/isuzutp', '_blank') }}
             >
               <img
                 className='product-button'
                 src={GetChat}
               />
             </div>
+            </a>
           </div>
         </div>
       )

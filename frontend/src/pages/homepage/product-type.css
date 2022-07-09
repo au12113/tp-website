@@ -153,7 +153,7 @@
     /* height: 140px; */
     overflow-x: hidden;
     /* margin: 30px auto 0px auto; */
-    margin: 0px auto 10px auto;
+    margin: 0px auto 20px auto;
   }
 
   .scrollbar:hover {
@@ -161,7 +161,7 @@
     height: 210px;
     overflow-x: auto;
     /* margin: 30px auto 10px auto; */
-    margin: 0px auto 0px auto;
+    margin: 0px auto 10px auto;
   }
 
   .model-container {

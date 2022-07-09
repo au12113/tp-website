@@ -20,7 +20,7 @@ const query = async (qString) => {
         console.log(err)
         result = err
     } finally {
-        if (conn) conn.end()
+        if (conn) conn.release()
     }
 }
 
