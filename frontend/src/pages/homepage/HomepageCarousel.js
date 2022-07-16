@@ -77,24 +77,23 @@ class HomepageCarousel extends React.Component {
   }
 
   carouselContentRender = () => {
-    return this.state.contents.map((item, index) => {
-      return (
-        <div key={index} className={'d-flex justify-content-center carousel-item '}>
-          <div className={`w-100 ${this.state.carouselPage === parseInt(index) ? 'd-block' : 'd-none'}`}>
-            <picture>
-              <source media="(max-width: 991px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileNameMobile}`} />
-              <source media="(min-width: 992px)" srcSet={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`} />
-              <img
-                src={`${process.env.PUBLIC_URL}/img/banner/${item.fileName}`}
-                className="d-block product"
-                style={{ width: '100%', objectFit: 'fill' }}
-                alt={item.fileName}
-              />
-            </picture>
-          </div>
+    const { fileName, fileNameMobile } = this.state.contents[this.state.carouselPage]
+    return (
+      <div className={'d-flex justify-content-center carousel-item'}>
+        <div className="w-100 d-block">
+          <picture>
+            <source media="(max-width: 991px)" srcSet={`${process.env.PUBLIC_URL}/assets/banner/${fileNameMobile}`} />
+            <source media="(min-width: 992px)" srcSet={`${process.env.PUBLIC_URL}/assets/banner/${fileName}`} />
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/banner/${fileName}`}
+              className="d-block product"
+              style={{ width: '100%', objectFit: 'fill' }}
+              alt={fileName}
+            />
+          </picture>
         </div>
-      )
-    })
+      </div>
+    )
   }
 
   render () {

@@ -6,8 +6,8 @@ const pool = mariadb.createPool({
     password: process.env.DB_PASSWORD,
     connectionLimit: 5,
     database: process.env.DB_NAME,
-    socketTimeout: 15000,
-    acquireTimeout: 30000
+    socketTimeout: 5000,
+    acquireTimeout: 10000
 })
 
 const query = async (qString) => {
@@ -15,12 +15,12 @@ const query = async (qString) => {
     try {
         conn = await pool.getConnection()
         result = await conn.query(qString)
-        return result
     } catch (err) {
         console.log(err)
         result = err
     } finally {
-        if (conn) conn.release()
+        if (conn) conn.end()
+        return result
     }
 }
 

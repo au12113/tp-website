@@ -1,0 +1,20 @@
+.actions-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.url-label {
+  display: block;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-label {
+  display: block;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

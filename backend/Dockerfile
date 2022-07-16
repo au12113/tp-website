@@ -1,10 +1,11 @@
 FROM node:12.22.12-alpine3.15
-
+ARG DB_URI=172.20.0.2
 ## Step 1:
 # Create a working directory
 RUN addgroup -S tp-website && adduser -D -G tp-website -h /usr/tp-backend -S tp-backend
 USER tp-backend
 WORKDIR /usr/tp-backend
+ENV DB_URI=$DB_URI
 
 ## Step 2:
 # Copy source code to working directory

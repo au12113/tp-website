@@ -4,7 +4,7 @@ services:
   backend:
     image: tp-backend:${BACKEND_VERSION}
     environment:
-      - DB_URI
+      - DB_URI=172.20.0.2
     build:
       context: backend
       dockerfile: Dockerfile
@@ -12,23 +12,33 @@ services:
       - 4000:4000
     volumes:
       - ~/website:/usr/tp-backend/shared:rw
-    mem_limit: 150m
+    mem_limit: 120m
     networks:
-      - default
+      default:
+        ipv4_address: 172.20.0.3
 
   frontend:
     image: tp-frontend:${FRONTEND_VERSION}
+    environment:
+      - REACT_APP_BACKEND_API=http://localhost:4000/v1/
     build:
       context: frontend
       dockerfile: Dockerfile
     ports:
       - 8080:8080
     volumes:
-      - ~/website:/usr/tp-frontend/shared:ro
+      - ~/website/assets:/usr/tp-frontend/public/assets:ro
     mem_limit: 350m
     networks:
-      - default
+      default:
+        ipv4_address: 172.20.0.4
+    depends_on:
+      - backend
 
 networks:
   default:
-    driver: bridge
+    ipam:
+      driver: bridge
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1

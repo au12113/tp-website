@@ -1,10 +1,11 @@
 FROM node:12.22.12-alpine3.15
-
+ARG REACT_APP_BACKEND_API=172.20.0.3
 ## Step 1:
 # Create a working directory
 RUN addgroup -S tp-website && adduser -D -G tp-website -h /usr/tp-frontend -S tp-frontend
 USER tp-frontend
 WORKDIR /usr/tp-frontend
+ENV REACT_APP_BACKEND_API=$REACT_APP_BACKEND_API
 
 ## Step 2:
 # Copy source code to working directory

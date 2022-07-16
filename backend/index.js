@@ -11,9 +11,11 @@ global.__basedir = __dirname
 global.__sharedir = path.join(require('os').homedir(), '/shared/assets/')
 // const urlencodeParser = bodyParser.urlencoded({ extended: false })
 
-// const { verifyToken } = require('./helpers/auth')
+const { verifyToken } = require('./helpers/auth')
 
+const accountRoute = require('./endpoints/accounts/accountRoute')
 const productRoute = require('./endpoints/products/productRoute')
+const adminRoute = require('./endpoints/admins/contentManagement')
 
 ///
 const homeController = require('./helpers/home')
@@ -44,7 +46,12 @@ console.log(__sharedir)
 
 app.get('/test', homeController.getHome)
 app.post('/upload', upload.uploadFile, upload.resizeImage, upload.getResult)
+
 app.use('/v1', productRoute)
+
+app.use('/v1', accountRoute)
+
+app.use('/v1/admin', verifyToken, adminRoute)
 
 app.listen(port, () => {
     (`Server listening on PORT: ${port}`)
